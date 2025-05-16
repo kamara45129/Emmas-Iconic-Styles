@@ -27,6 +27,62 @@
     </style>
 </head>
 <body class="bg-gray-50 font-sans">
+
+.bg-gold { background-color: var(--gold); }
+        .text-gold { color: var(--gold); }
+        .border-gold { border-color: var(--gold); }
+        
+        /* Product hover effect */
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        /* Mobile menu */
+        #mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        #mobile-menu.open {
+            max-height: 500px;
+        }
+        
+        /* Filter sidebar */
+        #filter-sidebar {
+            transition: transform 0.3s ease-out;
+        }
+        
+        #filter-sidebar.closed {
+            transform: translateX(-100%);
+        }
+        
+        /* Active filter */
+        .filter-option.active {
+            background-color: var(--gold);
+            color: var(--black);
+        }
+        
+        /* Price range slider */
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            background: var(--gold);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="bg-white text-black font-sans">
+    <!-- Navigation -->
+    <nav class="bg-black text-white sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-gold">EMMA'S ICONIC STYLE</a>
+                </div>
     <!-- Navigation -->
     <<!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-8">
