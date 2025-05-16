@@ -1,24 +1,567 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Shop - Emma's Iconic Style</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Emma's Iconic Style | Premium Footwear in Lira, Uganda</title>
+    <meta name="description" content="Browse our premium collection of shoes for men, women and children at Emma's Iconic Style in Lira, Uganda.">
+    <meta name="keywords" content="buy shoes Uganda, Lira footwear shop, men's shoes, women's shoes, kids shoes Uganda, Emma's Iconic Style store">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --black: #000000;
+            --white: #FFFFFF;
+        }
+        
+        .bg-gold { background-color: var(--gold); }
+        .text-gold { color: var(--gold); }
+        .border-gold { border-color: var(--gold); }
+        
+        /* Product hover effect */
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        /* Mobile menu */
+        #mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        #mobile-menu.open {
+            max-height: 500px;
+        }
+        
+        /* Filter sidebar */
+        #filter-sidebar {
+            transition: transform 0.3s ease-out;
+        }
+        
+        #filter-sidebar.closed {
+            transform: translateX(-100%);
+        }
+        
+        /* Active filter */
+        .filter-option.active {
+            background-color: var(--gold);
+            color: var(--black);
+        }
+        
+        /* Price range slider */
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            background: var(--gold);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
 </head>
-<body>
-  <!-- Navigation (same as index.html but with 'Shop' active) -->
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="shop.html" class="text-gold font-bold">Shop</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
+<body class="bg-white text-black font-sans">
+    <!-- Navigation -->
+    <nav class="bg-black text-white sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-gold">EMMA'S ICONIC STYLE</a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="hover:text-gold transition">Home</a>
+                    <a href="shop.html" class="text-gold font-semibold transition">Shop</a>
+                    <a href="about.html" class="hover:text-gold transition">About</a>
+                    <a href="contact.html" class="hover:text-gold transition">Contact</a>
+                    <a href="blog.html" class="hover:text-gold transition">Blog</a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="#" class="hover:text-gold"><i class="fas fa-search"></i></a>
+                    <a href="#" class="hover:text-gold"><i class="fas fa-user"></i></a>
+                    <a href="cart.html" class="hover:text-gold relative">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="absolute -top-2 -right-2 bg-gold text-black rounded-full w-5 h-5 flex items-center justify-center text-xs">3</span>
+                    </a>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden">
+                <div class="pt-4 pb-2 space-y-3">
+                    <a href="index.html" class="block hover:text-gold transition">Home</a>
+                    <a href="shop.html" class="block text-gold font-semibold transition">Shop</a>
+                    <a href="about.html" class="block hover:text-gold transition">About</a>
+                    <a href="contact.html" class="block hover:text-gold transition">Contact</a>
+                    <a href="blog.html" class="block hover:text-gold transition">Blog</a>
+                    <div class="flex space-x-4 pt-2">
+                        <a href="#" class="hover:text-gold"><i class="fas fa-search"></i></a>
+                        <a href="#" class="hover:text-gold"><i class="fas fa-user"></i></a>
+                        <a href="cart.html" class="hover:text-gold relative">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="absolute -top-2 -right-2 bg-gold text-black rounded-full w-5 h-5 flex items-center justify-center text-xs">3</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-  <main>
-    <h1>Welcome to the Shop</h1>
-    <p>Here you’ll find all our latest footwear collections!</p>
-  </main>
+    <!-- Shop Header -->
+    <section class="bg-gray-100 py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+                <div>
+                    <h1 class="text-3xl md:text-4xl font-bold mb-2">Our Shoe Collection</h1>
+                    <p class="text-gray-600">Find your perfect pair from our curated selection</p>
+                </div>
+                <div class="mt-4 md:mt-0 flex items-center">
+                    <span class="mr-2">Sort by:</span>
+                    <select class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gold">
+                        <option>Featured</option>
+                        <option>Price: Low to High</option>
+                        <option>Price: High to Low</option>
+                        <option>Newest Arrivals</option>
+                        <option>Best Sellers</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop Content -->
+    <section class="py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row">
+                <!-- Filter Sidebar -->
+                <div id="filter-sidebar" class="w-full md:w-64 pr-0 md:pr-8 mb-8 md:mb-0">
+                    <div class="bg-white p-6 rounded-lg shadow-md sticky top-24">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="font-bold text-lg">Filters</h3>
+                            <button id="close-filters" class="md:hidden text-gray-500">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Categories -->
+                        <div class="mb-6">
+                            <h4 class="font-semibold mb-3">Categories</h4>
+                            <div class="space-y-2">
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-2" checked>
+                                    <span>All Shoes</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-2">
+                                    <span>Men's Shoes</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-2">
+                                    <span>Women's Shoes</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-2">
+                                    <span>Kids' Shoes</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Price Range -->
+                        <div class="mb-6">
+                            <h4 class="font-semibold mb-3">Price Range</h4>
+                            <div class="mb-2">
+                                <input type="range" min="0" max="200000" value="100000" class="w-full">
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span>UGX 0</span>
+                                <span>UGX 200,000</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Size -->
+                        <div class="mb-6">
+                            <h4 class="font-semibold mb-3">Size</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <button class="filter-option border border-gray-300 px-3 py-1 rounded hover:bg-gray-100">36</button>
+                                <button class="filter-option border border-gray-300 px-3 py-1 rounded hover:bg-gray-100">37</button>
+                                <button class="filter-option border border-gray-300 px-3 py-1 rounded hover:bg-gray-100">38</button>
+                                <button class="filter-option border border-gray-300 px-3 py-1 rounded hover:bg-gray-100">39</button>
+                                <button class="filter-option border border-gray-300 px-3 py-1 rounded hover:bg-gray-100">40</button>
+                                <button class="filter-option border border-gray-300 px-3 py-1 rounded hover:bg-gray-100">41</button>
+                                <button class="filter-option border border-gray-300 px-3 py-1 rounded hover:bg-gray-100">42</button>
+                                <button class="filter-option border border-gray-300 px-3 py-1 rounded hover:bg-gray-100">43</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Color -->
+                        <div class="mb-6">
+                            <h4 class="font-semibold mb-3">Color</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <button class="w-6 h-6 rounded-full bg-black border border-gray-300"></button>
+                                <button class="w-6 h-6 rounded-full bg-white border border-gray-300"></button>
+                                <button class="w-6 h-6 rounded-full bg-brown-800 border border-gray-300"></button>
+                                <button class="w-6 h-6 rounded-full bg-red-600 border border-gray-300"></button>
+                                <button class="w-6 h-6 rounded-full bg-blue-600 border border-gray-300"></button>
+                                <button class="w-6 h-6 rounded-full bg-gray-400 border border-gray-300"></button>
+                            </div>
+                        </div>
+                        
+                        <!-- Apply Filters -->
+                        <button class="w-full bg-gold text-black py-2 rounded font-bold hover:bg-opacity-90 transition">
+                            Apply Filters
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Products Grid -->
+                <div class="flex-1">
+                    <!-- Filter Button for Mobile -->
+                    <button id="open-filters" class="md:hidden mb-4 flex items-center bg-black text-white px-4 py-2 rounded">
+                        <i class="fas fa-filter mr-2"></i> Filters
+                    </button>
+                    
+                    <!-- Product Count -->
+                    <div class="mb-6 text-gray-600">
+                        Showing 12 of 48 products
+                    </div>
+                    
+                    <!-- Products -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Product 1 -->
+                        <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                                     alt="Men's running shoes" 
+                                     class="w-full h-64 object-cover">
+                                <div class="absolute top-2 right-2 bg-gold text-black text-xs font-bold px-2 py-1 rounded">
+                                    NEW
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-bold text-lg mb-1">Nike Air Max</h3>
+                                <p class="text-gray-600 text-sm mb-2">Men's Running Shoes</p>
+                                <div class="flex items-center mb-3">
+                                    <div class="flex text-gold mr-2">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                    <span class="text-gray-500 text-sm">(24)</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-lg">UGX 250,000</span>
+                                    <button class="bg-black text-white px-3 py-1 rounded text-sm hover:bg-gray-800 transition">
+                                        <i class="fas fa-shopping-cart mr-1"></i> Add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Product 2 -->
+                        <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1600269452121-1f5d14148cd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                                     alt="Women's heels" 
+                                     class="w-full h-64 object-cover">
+                                <div class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
+                                    SALE
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-bold text-lg mb-1">Elegant Stilettos</h3>
+                                <p class="text-gray-600 text-sm mb-2">Women's High Heels</p>
+                                <div class="flex items-center mb-3">
+                                    <div class="flex text-gold mr-2">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                    <span class="text-gray-500 text-sm">(18)</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <span class="text-gray-400 line-through mr-2">UGX 180,000</span>
+                                        <span class="font-bold text-lg text-red-500">UGX 150,000</span>
+                                    </div>
+                                    <button class="bg-black text-white px-3 py-1 rounded text-sm hover:bg-gray-800 transition">
+                                        <i class="fas fa-shopping-cart mr-1"></i> Add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Product 3 -->
+                        <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                            <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                                 alt="Kids sneakers" 
+                                 class="w-full h-64 object-cover">
+                            <div class="p-4">
+                                <h3 class="font-bold text-lg mb-1">Colorful Sneakers</h3>
+                                <p class="text-gray-600 text-sm mb-2">Kids' Casual Shoes</p>
+                                <div class="flex items-center mb-3">
+                                    <div class="flex text-gold mr-2">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="text-gray-500 text-sm">(32)</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-lg">UGX 95,000</span>
+                                    <button class="bg-black text-white px-3 py-1 rounded text-sm hover:bg-gray-800 transition">
+                                        <i class="fas fa-shopping-cart mr-1"></i> Add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Product 4 -->
+                        <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                            <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80" 
+                                 alt="Men's leather shoes" 
+                                 class="w-full h-64 object-cover">
+                            <div class="p-4">
+                                <h3 class="font-bold text-lg mb-1">Classic Oxfords</h3>
+                                <p class="text-gray-600 text-sm mb-2">Men's Formal Shoes</p>
+                                <div class="flex items-center mb-3">
+                                    <div class="flex text-gold mr-2">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                    <span class="text-gray-500 text-sm">(27)</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-lg">UGX 210,000</span>
+                                    <button class="bg-black text-white px-3 py-1 rounded text-sm hover:bg-gray-800 transition">
+                                        <i class="fas fa-shopping-cart mr-1"></i> Add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Product 5 -->
+                        <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" 
+                                     alt="Women's sandals" 
+                                     class="w-full h-64 object-cover">
+                                <div class="absolute top-2 right-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">
+                                    BESTSELLER
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-bold text-lg mb-1">Summer Sandals</h3>
+                                <p class="text-gray-600 text-sm mb-2">Women's Casual Shoes</p>
+                                <div class="flex items-center mb-3">
+                                    <div class="flex text-gold mr-2">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="text-gray-500 text-sm">(45)</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-lg">UGX 120,000</span>
+                                    <button class="bg-black text-white px-3 py-1 rounded text-sm hover:bg-gray-800 transition">
+                                        <i class="fas fa-shopping-cart mr-1"></i> Add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Product 6 -->
+                        <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                            <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80" 
+                                 alt="School shoes" 
+                                 class="w-full h-64 object-cover">
+                            <div class="p-4">
+                                <h3 class="font-bold text-lg mb-1">School Shoes</h3>
+                                <p class="text-gray-600 text-sm mb-2">Kids' Formal Shoes</p>
+                                <div class="flex items-center mb-3">
+                                    <div class="flex text-gold mr-2">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                    <span class="text-gray-500 text-sm">(22)</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-lg">UGX 85,000</span>
+                                    <button class="bg-black text-white px-3 py-1 rounded text-sm hover:bg-gray-800 transition">
+                                        <i class="fas fa-shopping-cart mr-1"></i> Add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Pagination -->
+                    <div class="mt-12 flex justify-center">
+                        <nav class="flex items-center space-x-2">
+                            <button class="px-3 py-1 rounded border border-gray-300 text-gray-500">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="px-3 py-1 rounded bg-black text-white">1</button>
+                            <button class="px-3 py-1 rounded border border-gray-300 hover:bg-gray-100">2</button>
+                            <button class="px-3 py-1 rounded border border-gray-300 hover:bg-gray-100">3</button>
+                            <span class="px-2">...</span>
+                            <button class="px-3 py-1 rounded border border-gray-300 hover:bg-gray-100">8</button>
+                            <button class="px-3 py-1 rounded border border-gray-300 text-gray-500">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Stay Updated</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto mb-8">
+                Subscribe to our newsletter for exclusive offers, new arrivals, and style tips
+            </p>
+            
+            <form class="max-w-md mx-auto flex">
+                <input type="email" placeholder="Your email address" 
+                       class="flex-grow px-4 py-3 rounded-l-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gold">
+                <button type="submit" class="bg-gold text-black px-6 py-3 rounded-r-lg font-bold hover:bg-opacity-90 transition">
+                    Subscribe
+                </button>
+            </form>
+            
+            <p class="text-sm text-gray-500 mt-4">We respect your privacy. Unsubscribe at any time.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold text-gold mb-4">EMMA'S ICONIC STYLE</h3>
+                    <p class="mb-4">
+                        Lira's premier destination for stylish, affordable footwear since 2015.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:text-gold"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-gold"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white hover:text-gold"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white hover:text-gold"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Shop</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-gold transition">Women's Shoes</a></li>
+                        <li><a href="#" class="hover:text-gold transition">Men's Shoes</a></li>
+                        <li><a href="#" class="hover:text-gold transition">Kids' Shoes</a></li>
+                        <li><a href="#" class="hover:text-gold transition">New Arrivals</a></li>
+                        <li><a href="#" class="hover:text-gold transition">Sale Items</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Help</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-gold transition">Customer Service</a></li>
+                        <li><a href="#" class="hover:text-gold transition">Size Guide</a></li>
+                        <li><a href="#" class="hover:text-gold transition">Returns & Exchanges</a></li>
+                        <li><a href="#" class="hover:text-gold transition">Shipping Information</a></li>
+                        <li><a href="#" class="hover:text-gold transition">Shoe Care</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Contact</h4>
+                    <address class="not-italic">
+                        <p class="mb-2"><i class="fas fa-map-marker-alt text-gold mr-2"></i> 12 Market Street, Lira, Uganda</p>
+                        <p class="mb-2"><i class="fas fa-phone text-gold mr-2"></i> +256 772 123 456</p>
+                        <p class="mb-2"><i class="fas fa-envelope text-gold mr-2"></i> info@emmasiconicstyle.com</p>
+                        <p><i class="fas fa-clock text-gold mr-2"></i> Mon-Sat: 9AM - 7PM</p>
+                    </address>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">
+                    © 2023 Emma's Iconic Style. All rights reserved.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Returns Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+        });
+        
+        // Filter sidebar toggle for mobile
+        const filterSidebar = document.getElementById('filter-sidebar');
+        const openFiltersButton = document.getElementById('open-filters');
+        const closeFiltersButton = document.getElementById('close-filters');
+        
+        openFiltersButton.addEventListener('click', () => {
+            filterSidebar.classList.remove('closed');
+        });
+        
+        closeFiltersButton.addEventListener('click', () => {
+            filterSidebar.classList.add('closed');
+        });
+        
+        // Filter option selection
+        const filterOptions = document.querySelectorAll('.filter-option');
+        
+        filterOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                option.classList.toggle('active');
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
