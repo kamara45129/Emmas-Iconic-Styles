@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emma's Iconic Style - Premium Footwear in Lira, Uganda</title>
+    <meta name="description" content="Uganda's premier shoe store offering stylish, affordable footwear for men, women & children in Lira. Quality shoes with comfort and elegance.">
+    <meta name="keywords" content="shoes Uganda, Lira footwear, affordable shoes, men's shoes, women's shoes, kids shoes, Emma's Iconic Style">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Brand colors */
+        :root {
+            --gold: #D4AF37;
+            --black: #000000;
+            --white: #FFFFFF;
+        }
+        
+        .bg-gold { background-color: var(--gold); }
+        .text-gold { color: var(--gold); }
+        .border-gold { border-color: var(--gold); }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fadeIn {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        
+        /* Product hover effect */
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        /* Testimonial slider */
+        .testimonial-slide {
+            display: none;
+        }
+        
+        .testimonial-slide.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        /* Mobile menu */
+        #mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        #mobile-menu.open {
+            max-height: 500px;
+        }
+    </style>
+</head>
+<body class="bg-white text-black font-sans">
+    <!-- Navigation -->
+    <nav class="bg-black text-white sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-gold">EMMA'S ICONIC STYLE</a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="hover:text-gold transition">Home</a>
+                    <a href="shop.html" class="hover:text-gold transition">Shop</a>
+                    <a href="about.html" class="hover:text-gold transition">About</a>
+                    <a href="contact.html" class="hover:text-gold transition">Contact</a>
+                    <a href="blog.html" class="hover:text-gold transition">Blog</a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="#" class="hover:text-gold"><i class="fas fa-search"></i></a>
+                    <a href="#" class="hover:text-gold"><i class="fas fa-user"></i></a>
+                    <a href="cart.html" class="hover:text-gold relative">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="absolute -top-2 -right-2 bg-gold text-black rounded-full w-5 h-5 flex items-center justify-center text-xs">3</span>
+                    </a>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden">
+                <div class="pt-4 pb-2 space-y-3">
+                    <a href="index.html" class="block hover:text-gold transition">Home</a>
+                    <a href="shop.html" class="block hover:text-gold transition">Shop</a>
+                    <a href="about.html" class="block hover:text-gold transition">About</a>
+                    <a href="contact.html" class="block hover:text-gold transition">Contact</a>
+                    <a href="blog.html" class="block hover:text-gold transition">Blog</a>
+                    <div class="flex space-x-4 pt-2">
+                        <a href="#" class="hover:text-gold"><i class="fas fa-search"></i></a>
+                        <a href="#" class="hover:text-gold"><i class="fas fa-user"></i></a>
+                        <a href="cart.html" class="hover:text-gold relative">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="absolute -top-2 -right-2 bg-gold text-black rounded-full w-5 h-5 flex items-center justify-center text-xs">3</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative">
+        <div class="bg-black bg-opacity-60 absolute inset-0 z-10"></div>
+        <img src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" 
+             alt="Stylish shoes from Emma's Iconic Style" 
+             class="w-full h-96 md:h-screen object-cover">
+        
+        <div class="absolute inset-0 z-20 flex items-center">
+            <div class="container mx-auto px-4 text-center md:text-left">
+                <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4 animate-fadeIn">
+                    Step into Style with <span class="text-gold">Emma's Iconic Style</span>
+                </h1>
+                <p class="text-xl text-white mb-8 max-w-2xl mx-auto md:mx-0 animate-fadeIn">
+                    Your destination for modern footwear in Lira, Uganda
+                </p>
+                <a href="shop.html" class="bg-gold text-black px-8 py-3 rounded-full font-bold hover:bg-opacity-90 transition inline-block animate-fadeIn">
+                    Shop Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Our Collections</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Women's Shoes -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition">
+                    <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" 
+                         alt="Women's shoes" 
+                         class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Women's Collection</h3>
+                        <p class="text-gray-600 mb-4">Elegant and comfortable shoes for every occasion</p>
+                        <a href="shop.html?category=women" class="text-gold font-semibold hover:underline">Browse Collection →</a>
+                    </div>
+                </div>
+                
+                <!-- Men's Shoes -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition">
+                    <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80" 
+                         alt="Men's shoes" 
+                         class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Men's Collection</h3>
+                        <p class="text-gray-600 mb-4">Stylish and durable footwear for the modern man</p>
+                        <a href="shop.html?category=men" class="text-gold font-semibold hover:underline">Browse Collection →</a>
+                    </div>
+                </div>
+                
+                <!-- Kids' Shoes -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition">
+                    <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                         alt="Kids shoes" 
+                         class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Kids' Collection</h3>
+                        <p class="text-gray-600 mb-4">Comfortable and fun shoes for growing feet</p>
+                        <a href="shop.html?category=kids" class="text-gold font-semibold hover:underline">Browse Collection →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Current Promotions -->
+    <section class="py-16 bg-black text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gold">Current Promotions</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Easter Sale -->
+                <div class="bg-gray-900 rounded-lg overflow-hidden flex flex-col md:flex-row">
+                    <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80" 
+                         alt="Easter sale" 
+                         class="w-full md:w-1/2 h-64 object-cover">
+                    <div class="p-6 md:w-1/2">
+                        <span class="bg-gold text-black text-xs font-bold px-2 py-1 rounded">Limited Time</span>
+                        <h3 class="text-2xl font-bold my-3">Easter Special Sale</h3>
+                        <p class="text-gray-300 mb-4">30% off all dress shoes for the holiday season. Perfect for church and family gatherings.</p>
+                        <p class="text-gold font-bold mb-4">Offer valid until April 10th</p>
+                        <a href="promotions.html" class="text-gold font-semibold hover:underline">Shop the Sale →</a>
+                    </div>
+                </div>
+                
+                <!-- Back to School -->
+                <div class="bg-gray-900 rounded-lg overflow-hidden flex flex-col md:flex-row">
+                    <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=812&q=80" 
+                         alt="Back to school" 
+                         class="w-full md:w-1/2 h-64 object-cover">
+                    <div class="p-6 md:w-1/2">
+                        <span class="bg-gold text-black text-xs font-bold px-2 py-1 rounded">New Arrival</span>
+                        <h3 class="text-2xl font-bold my-3">Back to School Essentials</h3>
+                        <p class="text-gray-300 mb-4">Buy 2 pairs of school shoes, get 1 pair of socks free. Durable shoes for the academic year.</p>
+                        <p class="text-gold font-bold mb-4">While supplies last</p>
+                        <a href="promotions.html" class="text-gold font-semibold hover:underline">Shop the Deal →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8">
+                <a href="promotions.html" class="inline-block border-2 border-gold text-gold px-6 py-2 rounded-full font-bold hover:bg-gold hover:text-black transition">
+                    View All Promotions
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">What Our Customers Say</h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <!-- Testimonial Slides -->
+                <div class="testimonial-slide active">
+                    <div class="bg-gray-50 p-8 rounded-lg">
+                        <div class="flex items-center mb-6">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah K." class="w-16 h-16 rounded-full border-2 border-gold">
+                            <div class="ml-4">
+                                <h4 class="font-bold text-lg">Sarah K.</h4>
+                                <div class="flex text-gold">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 italic mb-6">
+                            "I bought my wedding shoes from Emma's Iconic Style and they were perfect! Comfortable enough to dance all night and so beautiful. The staff helped me find exactly what I needed."
+                        </p>
+                        <p class="text-sm text-gray-500">March 15, 2023</p>
+                    </div>
+                </div>
+                
+                <div class="testimonial-slide">
+                    <div class="bg-gray-50 p-8 rounded-lg">
+                        <div class="flex items-center mb-6">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="James O." class="w-16 h-16 rounded-full border-2 border-gold">
+                            <div class="ml-4">
+                                <h4 class="font-bold text-lg">James O.</h4>
+                                <div class="flex text-gold">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 italic mb-6">
+                            "As a teacher, I need comfortable shoes that can last. My leather shoes from Emma's have lasted two years now with proper care. Best value in Lira!"
+                        </p>
+                        <p class="text-sm text-gray-500">January 5, 2023</p>
+                    </div>
+                </div>
+                
+                <div class="testimonial-slide">
+                    <div class="bg-gray-50 p-8 rounded-lg">
+                        <div class="flex items-center mb-6">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Grace A." class="w-16 h-16 rounded-full border-2 border-gold">
+                            <div class="ml-4">
+                                <h4 class="font-bold text-lg">Grace A.</h4>
+                                <div class="flex text-gold">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 italic mb-6">
+                            "My children's school shoes from Emma's Iconic Style have survived the rainy season better than any others we've tried. The waterproofing treatment really works!"
+                        </p>
+                        <p class="text-sm text-gray-500">February 28, 2023</p>
+                    </div>
+                </div>
+                
+                <!-- Navigation dots -->
+                <div class="flex justify-center mt-6 space-x-2">
+                    <button class="testimonial-dot w-3 h-3 rounded-full bg-gray-300 focus:outline-none active"></button>
+                    <button class="testimonial-dot w-3 h-3 rounded-full bg-gray-300 focus:outline-none"></button>
+                    <button class="testimonial-dot w-3 h-3 rounded-full bg-gray-300 focus:outline-none"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Stay Updated</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto mb-8">
+                Subscribe to our newsletter for exclusive offers, new arrivals, and style tips
+            </p>
+            
+            <form class="max-w-md mx-auto flex">
+                <input type="email" placeholder="Your email address" 
+                       class="flex-grow px-4 py-3 rounded-l-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gold">
+                <button type="submit" class="bg-gold text-black px-6 py-3 rounded-r-lg font-bold hover:bg-opacity-90 transition">
+                    Subscribe
+                </button>
+            </form>
+            
+            <p class="text-sm text-gray-500 mt-4">We respect your privacy. Unsubscribe at any time.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold text-gold mb-4">EMMA'S ICONIC STYLE</h3>
+                    <p class="mb-4">
+                        Lira's premier destination for stylish, affordable footwear since 2015.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:text-gold"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-gold"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white hover:text-gold"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white hover:text-gold"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Shop</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-gold transition">Women's Shoes</a></li>
+                        <li><a href="#" class="hover:text-gold transition">Men's Shoes</a></li>
+                        <li><a href="#" class="hover:text-gold transition">Kids' Shoes</a></li>
+                        <li><a href="#" class="hover:text-gold transition">New Arrivals</a></li>
+                        <li><a href="#" class="hover:text-gold transition">Sale Items</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Help</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-gold transition">Customer Service</a></li>
+                        <li><a href="#" class="hover:text-gold transition">Size Guide</a></li>
+                        <li><a href="#" class="hover:text-gold transition">Returns & Exchanges</a></li>
+                        <li><a href="#" class="hover:text-gold transition">Shipping Information</a></li>
+                        <li><a href="#" class="hover:text-gold transition">Shoe Care</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Contact</h4>
+                    <address class="not-italic">
+                        <p class="mb-2"><i class="fas fa-map-marker-alt text-gold mr-2"></i> 12 Market Street, Lira, Uganda</p>
+                        <p class="mb-2"><i class="fas fa-phone text-gold mr-2"></i> +256 772 123 456</p>
+                        <p class="mb-2"><i class="fas fa-envelope text-gold mr-2"></i> info@emmasiconicstyle.com</p>
+                        <p><i class="fas fa-clock text-gold mr-2"></i> Mon-Sat: 9AM - 7PM</p>
+                    </address>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">
+                    © 2023 Emma's Iconic Style. All rights reserved.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Returns Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+        });
+        
+        // Testimonial slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const dots = document.querySelectorAll('.testimonial-dot');
+        
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+        
+        // Click event for dots
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+        
+        // Auto-rotate testimonials
+        setInterval(() => {
+            showSlide(currentSlide + 1);
+        }, 5000);
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
