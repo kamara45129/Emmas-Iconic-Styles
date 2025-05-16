@@ -1,23 +1,371 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>About Us - Emma's Iconic Style</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Emma's Iconic Styles</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-text {
+            background: linear-gradient(45deg, #f43f5e, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .hero-pattern {
+            background-image: radial-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        .hover-scale:hover {
+            transform: scale(1.03);
+        }
+        .fashion-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #8b5cf6;
+        }
+    </style>
 </head>
-<body>
-  <!-- Navigation -->
-  <!-- (Use the same nav as index.html but make "About" active) -->
+<body class="font-sans bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="flex items-center">
+                        <i class="fas fa-tshirt text-3xl text-purple-600"></i>
+                        <span class="ml-2 text-2xl font-bold gradient-text">Emma's Iconic Styles</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-gray-600 hover:text-purple-600 transition">Home</a>
+                    <a href="#" class="text-purple-600 font-medium">About</a>
+                    <a href="#" class="text-gray-600 hover:text-purple-600 transition">Collections</a>
+                    <a href="#" class="text-gray-600 hover:text-purple-600 transition">Blog</a>
+                    <a href="#" class="text-gray-600 hover:text-purple-600 transition">Contact</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="p-2 text-gray-600 hover:text-purple-600"><i class="fas fa-search"></i></a>
+                    <a href="#" class="p-2 text-gray-600 hover:text-purple-600"><i class="fas fa-shopping-bag"></i></a>
+                    <button class="md:hidden focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-  <main class="container mx-auto px-4 py-16">
-    <h1 class="text-4xl font-bold mb-4">About Emma's Iconic Style</h1>
-    <p class="text-lg text-gray-700 mb-6">
-      Founded in 2015 in Lira, Uganda, Emma's Iconic Style brings affordable, stylish footwear to men, women, and children.
-    </p>
-    <p class="text-gray-600">
-      Our mission is to blend comfort, quality, and elegance in every step. Whether you're looking for everyday essentials or something to stand out, we have you covered.
-    </p>
-  </main>
+    <!-- Hero Section -->
+    <section class="hero-pattern py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">Our <span class="gradient-text">Story</span></h1>
+                    <p class="text-lg text-gray-600 mb-8">Discover the passion and creativity behind Emma's Iconic Styles, where fashion meets individuality.</p>
+                    <div class="flex space-x-4">
+                        <a href="#mission" class="px-6 py-3 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition">Our Mission</a>
+                        <a href="#team" class="px-6 py-3 border border-purple-600 text-purple-600 rounded-full hover:bg-purple-50 transition">Meet the Team</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-8 border-white shadow-xl hover-scale">
+                        <img src="https://images.unsplash.com/photo-1490114538077-0a7f8cb49891?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Fashion Designer" 
+                             class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section id="mission" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our <span class="gradient-text">Mission</span></h2>
+                <div class="w-24 h-1 bg-purple-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">To empower individuals to express their unique personalities through fashion that's both stylish and sustainable.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="bg-gray-50 p-8 rounded-xl hover-scale transition shadow-sm">
+                    <i class="fas fa-leaf fashion-icon"></i>
+                    <h3 class="text-xl font-bold mb-3">Sustainable Fashion</h3>
+                    <p class="text-gray-600">We're committed to eco-friendly practices, using sustainable materials and ethical production methods to minimize our environmental impact.</p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-xl hover-scale transition shadow-sm">
+                    <i class="fas fa-heart fashion-icon"></i>
+                    <h3 class="text-xl font-bold mb-3">Inclusive Design</h3>
+                    <p class="text-gray-600">Our collections celebrate diversity with sizes for all body types and styles that reflect various cultures and identities.</p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-xl hover-scale transition shadow-sm">
+                    <i class="fas fa-lightbulb fashion-icon"></i>
+                    <h3 class="text-xl font-bold mb-3">Innovative Style</h3>
+                    <p class="text-gray-600">We push boundaries with unique designs that blend contemporary trends with timeless elegance for truly iconic looks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Our <span class="gradient-text">Journey</span></h2>
+                    <div class="space-y-6">
+                        <div class="flex">
+                            <div class="flex-shrink-0 mr-4">
+                                <div class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-100 text-purple-600">
+                                    <i class="fas fa-seedling"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">2015 - Humble Beginnings</h4>
+                                <p class="text-gray-600">Emma started with a small boutique in downtown, creating custom pieces for local clients.</p>
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div class="flex-shrink-0 mr-4">
+                                <div class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-100 text-purple-600">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">2018 - First Collection</h4>
+                                <p class="text-gray-600">Launched our debut ready-to-wear collection, gaining attention from fashion influencers.</p>
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div class="flex-shrink-0 mr-4">
+                                <div class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-100 text-purple-600">
+                                    <i class="fas fa-trophy"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">2021 - Sustainability Award</h4>
+                                <p class="text-gray-600">Recognized for our commitment to eco-friendly fashion with the Green Style Award.</p>
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div class="flex-shrink-0 mr-4">
+                                <div class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-100 text-purple-600">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">2023 - Global Presence</h4>
+                                <p class="text-gray-600">Now shipping to over 50 countries with flagship stores in 3 major fashion capitals.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="rounded-lg overflow-hidden shadow-md hover-scale">
+                            <img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80" 
+                                 alt="Fashion Studio" 
+                                 class="w-full h-64 object-cover">
+                        </div>
+                        <div class="rounded-lg overflow-hidden shadow-md hover-scale">
+                            <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                                 alt="Fashion Show" 
+                                 class="w-full h-64 object-cover">
+                        </div>
+                        <div class="rounded-lg overflow-hidden shadow-md hover-scale">
+                            <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                                 alt="Design Process" 
+                                 class="w-full h-64 object-cover">
+                        </div>
+                        <div class="rounded-lg overflow-hidden shadow-md hover-scale">
+                            <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                                 alt="Retail Store" 
+                                 class="w-full h-64 object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Meet Our <span class="gradient-text">Team</span></h2>
+                <div class="w-24 h-1 bg-purple-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">The creative minds and passionate individuals who bring Emma's Iconic Styles to life.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden border-4 border-white shadow-lg hover-scale">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" 
+                             alt="Emma Johnson" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-bold mb-1">Emma Johnson</h3>
+                    <p class="text-purple-600 mb-3">Founder & Creative Director</p>
+                    <p class="text-gray-600 px-4">With a vision for unique style, Emma leads our design team in creating collections that inspire confidence.</p>
+                    <div class="flex justify-center space-x-3 mt-4">
+                        <a href="#" class="text-gray-500 hover:text-purple-600"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-500 hover:text-purple-600"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-500 hover:text-purple-600"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden border-4 border-white shadow-lg hover-scale">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                             alt="Michael Chen" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-bold mb-1">Michael Chen</h3>
+                    <p class="text-purple-600 mb-3">Head of Design</p>
+                    <p class="text-gray-600 px-4">Michael's innovative approach to fashion merges traditional techniques with cutting-edge technology.</p>
+                    <div class="flex justify-center space-x-3 mt-4">
+                        <a href="#" class="text-gray-500 hover:text-purple-600"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-500 hover:text-purple-600"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-500 hover:text-purple-600"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden border-4 border-white shadow-lg hover-scale">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" 
+                             alt="Sarah Williams" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-bold mb-1">Sarah Williams</h3>
+                    <p class="text-purple-600 mb-3">Sustainability Officer</p>
+                    <p class="text-gray-600 px-4">Sarah ensures our commitment to the environment is reflected in every aspect of our production process.</p>
+                    <div class="flex justify-center space-x-3 mt-4">
+                        <a href="#" class="text-gray-500 hover:text-purple-600"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-500 hover:text-purple-600"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-500 hover:text-purple-600"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="py-20 bg-purple-600 text-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Core <span class="text-purple-200">Values</span></h2>
+                <div class="w-24 h-1 bg-white mx-auto mb-6"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="text-center p-6 bg-purple-700 rounded-xl hover-scale transition">
+                    <i class="fas fa-hand-holding-heart text-4xl mb-4 text-purple-200"></i>
+                    <h3 class="text-xl font-bold mb-3">Authenticity</h3>
+                    <p>We stay true to our vision of creating fashion that's genuine, original, and reflects real people's styles.</p>
+                </div>
+                <div class="text-center p-6 bg-purple-700 rounded-xl hover-scale transition">
+                    <i class="fas fa-recycle text-4xl mb-4 text-purple-200"></i>
+                    <h3 class="text-xl font-bold mb-3">Responsibility</h3>
+                    <p>From sourcing to shipping, we take responsibility for our environmental impact and social influence.</p>
+                </div>
+                <div class="text-center p-6 bg-purple-700 rounded-xl hover-scale transition">
+                    <i class="fas fa-lightbulb text-4xl mb-4 text-purple-200"></i>
+                    <h3 class="text-xl font-bold mb-3">Innovation</h3>
+                    <p>We constantly push boundaries to create fresh, exciting designs that stand out in the fashion world.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Join Our <span class="gradient-text">Fashion Journey</span></h2>
+            <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">Be part of our community and stay updated with our latest collections, events, and sustainable fashion initiatives.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#" class="px-8 py-4 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition font-medium">Shop Now</a>
+                <a href="#" class="px-8 py-4 border border-purple-600 text-purple-600 rounded-full hover:bg-purple-50 transition font-medium">Subscribe to Newsletter</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                <div>
+                    <a href="#" class="flex items-center mb-6">
+                        <i class="fas fa-tshirt text-3xl text-purple-400"></i>
+                        <span class="ml-2 text-2xl font-bold">Emma's Iconic Styles</span>
+                    </a>
+                    <p class="text-gray-400 mb-4">Where fashion meets individuality in the most sustainable way possible.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Collections</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Customer Service</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">FAQs</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Shipping Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Returns & Exchanges</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Size Guide</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-purple-400"></i>
+                            <span>123 Fashion Ave, New York, NY 10001</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-3 text-purple-400"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3 text-purple-400"></i>
+                            <span>hello@emmasiconicstyles.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2023 Emma's Iconic Styles. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <img src="https://via.placeholder.com/40x25" alt="Visa" class="h-6">
+                    <img src="https://via.placeholder.com/40x25" alt="Mastercard" class="h-6">
+                    <img src="https://via.placeholder.com/40x25" alt="PayPal" class="h-6">
+                    <img src="https://via.placeholder.com/40x25" alt="Apple Pay" class="h-6">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript for mobile menu toggle (would need to be expanded in a real implementation)
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.querySelector('.md\\:hidden');
+            // In a real implementation, you would add click handler to show/hide mobile menu
+        });
+    </script>
 </body>
 </html>
