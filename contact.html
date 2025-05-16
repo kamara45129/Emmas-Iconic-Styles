@@ -1,23 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Contact Us - Emma's Iconic Style</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Emma's Iconic Styles</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      background: white;
+      padding: 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input, textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+
+    footer {
+      background-color: #eee;
+      text-align: center;
+      padding: 15px 0;
+      margin-top: 40px;
+      color: #666;
+    }
+  </style>
 </head>
 <body>
-  <!-- Navigation (same as your main site) -->
 
-  <main class="container mx-auto px-4 py-16">
-    <h1 class="text-4xl font-bold mb-4">Get in Touch</h1>
-    <p class="text-lg text-gray-600 mb-6">Have questions or need help? Reach out to us below.</p>
+  <header>
+    <h1>Emma's Iconic Styles</h1>
+    <p>Your destination for modern footwear in Lira, Uganda</p>
+  </header>
 
-    <form class="space-y-4 max-w-xl">
-      <input type="text" placeholder="Your Name" class="w-full px-4 py-2 border rounded">
-      <input type="email" placeholder="Your Email" class="w-full px-4 py-2 border rounded">
-      <textarea placeholder="Your Message" class="w-full px-4 py-2 border rounded h-40"></textarea>
-      <button class="bg-gold text-black px-6 py-2 rounded hover:bg-opacity-90 font-bold">Send</button>
+  <div class="container">
+    <h2>Contact Us</h2>
+    <form action="mailto:youremail@example.com" method="POST" enctype="text/plain">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="Your name" required />
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required />
+
+      <label for="message">Your Message</label>
+      <textarea id="message" name="message" rows="6" placeholder="Write your message here..." required></textarea>
+
+      <button type="submit">Send Message</button>
     </form>
-  </main>
+  </div>
+
+  <footer>
+    &copy; 2025 Emma's Iconic Styles. All rights reserved.
+  </footer>
+
 </body>
 </html>
