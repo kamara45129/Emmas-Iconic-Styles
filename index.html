@@ -665,24 +665,27 @@
             
             // Generate response based on user input
             function generateResponse(message) {
-                // In a real implementation, this would analyze the website content
-                // For this demo, we'll use some generic responses
-                const lowerMessage = message.toLowerCase();
-                
-                if (lowerMessage.includes('hello') || lowerMessage.includes('hi')) {
-                    return "Hello! I'm Emma's Iconic Assistant. I can help you understand this website better. What would you like to know?";
-                } else if (lowerMessage.includes('about') || lowerMessage.includes('what is this')) {
-                    return "I can analyze this webpage's content to help you find information quickly. Try asking me specific questions about what you see on this site!";
-                } else if (lowerMessage.includes('contact') || lowerMessage.includes('email')) {
-                    return "I can help you find contact information on this website. Would you like me to look for an email address, phone number, or contact form?";
-                } else if (lowerMessage.includes('price') || lowerMessage.includes('cost')) {
-                    return "I can scan this page for pricing information. Let me check... (Note: In a real implementation, I would actually analyze the page content)";
-                } else if (lowerMessage.includes('help')) {
-                    return "I'm here to help! I can explain content on this page, find specific information, or summarize sections. What would you like to know?";
-                } else {
-                    return "I understand you're asking about \"" + message + "\". As your website assistant, I would normally analyze this page's content to provide a precise answer. In a real implementation, I would process the DOM to find relevant information.";
-                }
-            }
+    const lowerMessage = message.toLowerCase();
+
+    if (lowerMessage.includes('hello') || lowerMessage.includes('hi')) {
+        return "Hi there! I'm Emma's Iconic Assistant. Ask me anything about the styles, prices, or how to order from this shop.";
+    } else if (lowerMessage.includes('dress') || lowerMessage.includes('gown')) {
+        return "You're in the right place! This shop features elegant dresses and iconic gowns perfect for any occasion.";
+    } else if (lowerMessage.includes('price') || lowerMessage.includes('cost')) {
+        return "Prices are listed directly under each product on this page. Let me know if you're looking for something within a specific price range!";
+    } else if (lowerMessage.includes('order') || lowerMessage.includes('buy') || lowerMessage.includes('purchase')) {
+        return "To place an order, just click on the product you're interested in. You'll be guided to the checkout or order instructions.";
+    } else if (lowerMessage.includes('delivery') || lowerMessage.includes('shipping')) {
+        return "We offer fast and reliable delivery. You can find more about shipping at checkout or by contacting customer support.";
+    } else if (lowerMessage.includes('contact') || lowerMessage.includes('support') || lowerMessage.includes('email')) {
+        return "You can reach us via the contact form or email provided on our contact page. Need me to direct you there?";
+    } else if (lowerMessage.includes('categories') || lowerMessage.includes('types')) {
+        return "Our styles include classic dresses, elegant gowns, and more. Browse the page to see the full collection.";
+    } else {
+        return `You're asking about: "${message}". This is Emma's shop page, showcasing beautiful iconic styles. Try asking about dresses, prices, delivery, or how to order!`;
+    }
+}
+
             
             // Event listeners for sending messages
             sendMessage.addEventListener('click', sendUserMessage);
