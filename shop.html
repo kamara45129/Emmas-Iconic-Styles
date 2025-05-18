@@ -560,3 +560,266 @@
     </script>
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emma's Iconic Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .chatbot-container {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .message-entering {
+            animation: messageEnter 0.3s ease-out forwards;
+        }
+        
+        @keyframes messageEnter {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .typing-indicator span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #6b7280;
+            margin: 0 2px;
+            animation: bounce 1.4s infinite ease-in-out;
+        }
+        
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        @keyframes bounce {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-5px); }
+        }
+        
+        .chatbot-toggle {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #8e2de2 0%, #4a00e0 100%);
+        }
+    </style>
+</head>
+<body>
+    <!-- Chatbot Toggle Button -->
+    <div class="fixed bottom-8 right-8 z-50">
+        <button id="chatbotToggle" class="chatbot-toggle bg-purple-600 hover:bg-purple-700 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg transition-all duration-300">
+            <i class="fas fa-robot text-2xl"></i>
+        </button>
+    </div>
+
+    <!-- Chatbot Container -->
+    <div id="chatbotContainer" class="fixed bottom-32 right-8 w-96 h-[600px] opacity-0 scale-95 pointer-events-none transition-all duration-300 z-40">
+        <div class="chatbot-container bg-white h-full flex flex-col">
+            <!-- Header -->
+            <div class="gradient-bg text-white p-4 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center">
+                        <i class="fas fa-robot text-purple-600 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold">Emma's Iconic Assistant</h3>
+                        <p class="text-xs opacity-80">Understanding your website content</p>
+                    </div>
+                </div>
+                <div class="flex space-x-2">
+                    <button class="w-8 h-8 rounded-full bg-white bg-opacity-20 flex items-center justify-center hover:bg-opacity-30 transition">
+                        <i class="fas fa-cog text-xs"></i>
+                    </button>
+                    <button id="closeChatbot" class="w-8 h-8 rounded-full bg-white bg-opacity-20 flex items-center justify-center hover:bg-opacity-30 transition">
+                        <i class="fas fa-times text-xs"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Chat Messages -->
+            <div id="chatMessages" class="flex-1 p-4 overflow-y-auto space-y-4">
+                <!-- Initial welcome message -->
+                <div class="flex">
+                    <div class="w-8 h-8 rounded-full bg-purple-100 flex-shrink-0 flex items-center justify-center mr-3">
+                        <i class="fas fa-robot text-purple-600 text-sm"></i>
+                    </div>
+                    <div class="message-entering bg-gray-100 rounded-2xl rounded-tl-none px-4 py-3 max-w-[80%]">
+                        <p class="text-gray-800">Hello there! I'm Emma's Iconic Assistant. I can understand and answer questions about this website's content. How can I help you today?</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Input Area -->
+            <div class="border-t border-gray-200 p-4">
+                <div class="relative">
+                    <textarea id="userInput" class="w-full border border-gray-300 rounded-2xl px-4 py-3 pr-12 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none" placeholder="Ask me about this website..." rows="1"></textarea>
+                    <button id="sendMessage" class="absolute right-3 bottom-3 w-10 h-10 rounded-full gradient-bg text-white flex items-center justify-center hover:opacity-90 transition">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <p class="text-xs text-gray-500 mt-2 text-center">Emma can understand this page's content to answer your questions</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatbotToggle = document.getElementById('chatbotToggle');
+            const chatbotContainer = document.getElementById('chatbotContainer');
+            const closeChatbot = document.getElementById('closeChatbot');
+            const chatMessages = document.getElementById('chatMessages');
+            const userInput = document.getElementById('userInput');
+            const sendMessage = document.getElementById('sendMessage');
+            
+            let isChatbotOpen = false;
+            
+            // Toggle chatbot visibility
+            chatbotToggle.addEventListener('click', () => {
+                isChatbotOpen = !isChatbotOpen;
+                if (isChatbotOpen) {
+                    chatbotContainer.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
+                    chatbotContainer.classList.add('opacity-100', 'scale-100', 'pointer-events-auto');
+                } else {
+                    chatbotContainer.classList.remove('opacity-100', 'scale-100', 'pointer-events-auto');
+                    chatbotContainer.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+                }
+            });
+            
+            // Close chatbot
+            closeChatbot.addEventListener('click', () => {
+                isChatbotOpen = false;
+                chatbotContainer.classList.remove('opacity-100', 'scale-100', 'pointer-events-auto');
+                chatbotContainer.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+            });
+            
+            // Auto-resize textarea
+            userInput.addEventListener('input', function() {
+                this.style.height = 'auto';
+                this.style.height = (this.scrollHeight) + 'px';
+            });
+            
+            // Send message function
+            function sendUserMessage() {
+                const message = userInput.value.trim();
+                if (message === '') return;
+                
+                // Add user message to chat
+                addMessage(message, 'user');
+                userInput.value = '';
+                userInput.style.height = 'auto';
+                
+                // Show typing indicator
+                const typingIndicator = document.createElement('div');
+                typingIndicator.className = 'flex';
+                typingIndicator.innerHTML = `
+                    <div class="w-8 h-8 rounded-full bg-purple-100 flex-shrink-0 flex items-center justify-center mr-3">
+                        <i class="fas fa-robot text-purple-600 text-sm"></i>
+                    </div>
+                    <div class="typing-indicator bg-gray-100 rounded-2xl rounded-tl-none px-4 py-3">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                `;
+                chatMessages.appendChild(typingIndicator);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                
+                // Simulate response after delay
+                setTimeout(() => {
+                    // Remove typing indicator
+                    chatMessages.removeChild(typingIndicator);
+                    
+                    // Generate response based on user message
+                    const response = generateResponse(message);
+                    addMessage(response, 'bot');
+                }, 1500);
+            }
+            
+            // Add message to chat
+            function addMessage(content, sender) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'flex';
+                
+                if (sender === 'user') {
+                    messageDiv.innerHTML = `
+                        <div class="flex-1"></div>
+                        <div class="message-entering bg-purple-600 text-white rounded-2xl rounded-tr-none px-4 py-3 max-w-[80%]">
+                            <p>${content}</p>
+                        </div>
+                    `;
+                } else {
+                    messageDiv.innerHTML = `
+                        <div class="w-8 h-8 rounded-full bg-purple-100 flex-shrink-0 flex items-center justify-center mr-3">
+                            <i class="fas fa-robot text-purple-600 text-sm"></i>
+                        </div>
+                        <div class="message-entering bg-gray-100 rounded-2xl rounded-tl-none px-4 py-3 max-w-[80%]">
+                            <p class="text-gray-800">${content}</p>
+                        </div>
+                    `;
+                }
+                
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+            
+            // Generate response based on user input
+            function generateResponse(message) {
+                // In a real implementation, this would analyze the website content
+                // For this demo, we'll use some generic responses
+                const lowerMessage = message.toLowerCase();
+                
+                if (lowerMessage.includes('hello') || lowerMessage.includes('hi')) {
+                    return "Hello! I'm Emma's Iconic Assistant. I can help you understand this website better. What would you like to know?";
+                } else if (lowerMessage.includes('about') || lowerMessage.includes('what is this')) {
+                    return "I can analyze this webpage's content to help you find information quickly. Try asking me specific questions about what you see on this site!";
+                } else if (lowerMessage.includes('contact') || lowerMessage.includes('email')) {
+                    return "I can help you find contact information on this website. Would you like me to look for an email address, phone number, or contact form?";
+                } else if (lowerMessage.includes('price') || lowerMessage.includes('cost')) {
+                    return "I can scan this page for pricing information. Let me check... (Note: In a real implementation, I would actually analyze the page content)";
+                } else if (lowerMessage.includes('help')) {
+                    return "I'm here to help! I can explain content on this page, find specific information, or summarize sections. What would you like to know?";
+                } else {
+                    return "I understand you're asking about \"" + message + "\". As your website assistant, I would normally analyze this page's content to provide a precise answer. In a real implementation, I would process the DOM to find relevant information.";
+                }
+            }
+            
+            // Event listeners for sending messages
+            sendMessage.addEventListener('click', sendUserMessage);
+            userInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendUserMessage();
+                }
+            });
+            
+            // Initialize with chatbot hidden
+            chatbotContainer.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+        });
+    </script>
+</body>
+</html>
