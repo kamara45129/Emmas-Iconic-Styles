@@ -43,33 +43,41 @@
                         </a>
                     </div>
                 </div>
-                <div class="hidden md:flex items-center space-x-6">
-                    <a href="#" class="py-2 px-2 text-gray-700 hover:text-pink-500 transition duration-300">Home</a>
-                    <a href="#" class="py-2 px-2 text-gray-700 hover:text-pink-500 transition duration-300">Shop</a>
-                    <a href="#" class="py-2 px-2 text-gray-700 hover:text-pink-500 transition duration-300">Collections</a>
-                    <a href="#" class="py-2 px-2 text-gray-700 hover:text-pink-500 transition duration-300">About</a>
-                    <a href="#" class="py-2 px-2 text-pink-500 font-semibold border-b-2 border-pink-500">Contact</a>
+               <!-- Desktop Menu -->
+                    <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="hover:text-gold transition">Home</a>
+                    <a href="shop.html" class="text-gold font-semibold transition">Shop</a>
+                    <a href="about.html" class="hover:text-gold transition">About</a>
+                    <a href="contact.html" class="hover:text-gold transition">Contact</a>
+                    <a href="blog.html" class="hover:text-gold transition">Blog</a>
                 </div>
-                <div class="md:hidden flex items-center">
-                    <button class="outline-none mobile-menu-button">
-                        <svg class="w-6 h-6 text-gray-700" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                            <path d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
+                
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden">
+                <div class="pt-4 pb-2 space-y-3">
+                    <a href="index.html" class="block hover:text-gold transition">Home</a>
+                    <a href="shop.html" class="block text-gold font-semibold transition">Shop</a>
+                    <a href="about.html" class="block hover:text-gold transition">About</a>
+                    <a href="contact.html" class="block hover:text-gold transition">Contact</a>
+                    <a href="blog.html" class="block hover:text-gold transition">Blog</a>
+                    <div class="flex space-x-4 pt-2">
+                        <a href="#" class="hover:text-gold"><i class="fas fa-search"></i></a>
+                        <a href="#" class="hover:text-gold"><i class="fas fa-user"></i></a>
+                        <a href="cart.html" class="hover:text-gold relative">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="absolute -top-2 -right-2 bg-gold text-black rounded-full w-5 h-5 flex items-center justify-center text-xs">3</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="hidden mobile-menu">
-            <ul class="bg-white px-4 pb-4">
-                <li><a href="#" class="block py-2 text-gray-700 hover:text-pink-500">Home</a></li>
-                <li><a href="#" class="block py-2 text-gray-700 hover:text-pink-500">Shop</a></li>
-                <li><a href="#" class="block py-2 text-gray-700 hover:text-pink-500">Collections</a></li>
-                <li><a href="#" class="block py-2 text-gray-700 hover:text-pink-500">About</a></li>
-                <li><a href="#" class="block py-2 text-pink-500 font-semibold">Contact</a></li>
-            </ul>
-        </div>
     </nav>
-
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-12">
         <div class="text-center mb-16">
