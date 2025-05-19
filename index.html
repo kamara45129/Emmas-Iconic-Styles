@@ -64,7 +64,7 @@
         <div class="container mx-auto px-4 py-3">
             <div class="flex justify-between items-center">
                 <div class="flex items-center">
-                    <a href="index.html" class="text-2xl font-bold text-gold">EMMA'S ICONIC STYLE</a>
+                    <a href="index.html" class="text-2xl font-bold text-gold">EMMAS ICONIC STYLE</a>
                 </div>
                 
                 <!-- Desktop Menu -->
@@ -74,7 +74,7 @@
                     <a href="about.html" class="hover:text-gold transition">About</a>
                     <a href="contact.html" class="hover:text-gold transition">Contact</a>
                     <a href="blog.html" class="hover:text-gold transition">Blog</a>
-                      <a href="search.html" class="text-gold font-semibold transition">Search</a>
+                    <a href="search.html" class="text-gold font-semibold transition">Search</a>
                 </div>
                 
                 <div class="hidden md:flex items-center space-x-4">
@@ -112,6 +112,77 @@
             </div>
         </div>
     </nav>
+<script>
+  // Store cart items in memory
+  let cartItems = [];
+
+  // DOM references
+  const cartBtn = document.getElementById('cartBtn');
+  const cartCount = document.getElementById('cartCount');
+  const overlay = document.querySelector('.overlay');
+  const cartPanel = document.querySelector('.cart-panel');
+
+  // Open cart
+  cartBtn.addEventListener('click', () => {
+    cartPanel.classList.add('open');
+    overlay.classList.add('active');
+  });
+
+  // Close cart when clicking outside
+  overlay.addEventListener('click', () => {
+    cartPanel.classList.remove('open');
+    overlay.classList.remove('active');
+  });
+
+  // Add to Cart Function
+  const addToCartButtons = document.querySelectorAll('.add-to-cart');
+  addToCartButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const item = {
+        id: button.getAttribute('data-id'),
+        name: button.getAttribute('data-name'),
+        price: parseFloat(button.getAttribute('data-price')),
+        image: button.getAttribute('data-image'),
+      };
+
+      // Check if item is already in cart
+      const existingItem = cartItems.find(i => i.id === item.id);
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        item.quantity = 1;
+        cartItems.push(item);
+      }
+
+      // Update UI
+      updateCartUI();
+    });
+  });
+
+  function updateCartUI() {
+    // Update cart count
+    const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
+    cartCount.textContent = totalItems;
+    cartCount.classList.remove('hidden');
+
+    // Generate HTML inside cart panel (optional)
+    let cartHTML = '<div class="p-6"><h2 class="text-xl font-bold mb-4">Your Cart</h2>';
+    cartItems.forEach(item => {
+      cartHTML += `
+        <div class="flex items-center mb-4 border-b pb-4">
+          <img src="${item.image}" alt="${item.name}" class="w-16 h-16 rounded object-cover mr-4">
+          <div class="flex-1">
+            <h4 class="font-semibold">${item.name}</h4>
+            <p class="text-sm text-gray-600">Qty: ${item.quantity}</p>
+            <p class="text-purple-600 font-bold">$${(item.price * item.quantity).toFixed(2)}</p>
+          </div>
+        </div>
+      `;
+    });
+    cartHTML += '</div>';
+    cartPanel.innerHTML = cartHTML;
+  }
+</script>
 
     <!-- Hero Section -->
     <section class="relative">
