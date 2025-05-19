@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emma's Iconic Styles - Fashion Boutique</title>
+    <title>Emmas Iconic Styles - Fashion Boutique</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -135,27 +135,44 @@
         <div class="container mx-auto px-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <i class="fas fa-tshirt text-2xl text-purple-600"></i>
-                <span class="heading-font text-xl font-bold">Emma's Iconic Styles</span>
+                <span class="heading-font text-xl font-bold">Emmas Iconic Styles</span>
             </div>
             
-            <div class="hidden md:flex space-x-6">
-                <a href="#" class="font-medium hover:text-purple-600">Home</a>
-                <a href="#" class="font-medium hover:text-purple-600">Shop</a>
-                <a href="#" class="font-medium hover:text-purple-600">Collections</a>
-                <a href="#" class="font-medium hover:text-purple-600">About</a>
-                <a href="#" class="font-medium hover:text-purple-600">Contact</a>
-            </div>
-            
-            <div class="flex items-center space-x-4">
-                <div class="relative">
-                    <button id="cartBtn" class="text-gray-700 hover:text-purple-600 focus:outline-none relative">
-                        <i class="fas fa-shopping-bag text-xl"></i>
-                        <span id="cartCount" class="cart-notification hidden">0</span>
-                    </button>
+            <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="hover:text-gold transition">Home</a>
+                    <a href="shop.html" class="text-gold font-semibold transition">Shop</a>
+                    <a href="about.html" class="hover:text-gold transition">About</a>
+                    <a href="contact.html" class="hover:text-gold transition">Contact</a>
+                    <a href="blog.html" class="hover:text-gold transition">Blog</a>
+                    <a href="search.html" class="text-gold font-semibold transition">Search</a>
                 </div>
-                <button class="md:hidden text-gray-700 focus:outline-none">
-                    <i class="fas fa-bars text-xl"></i>
+                 
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
                 </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden">
+                <div class="pt-4 pb-2 space-y-3">
+                    <a href="index.html" class="block hover:text-gold transition">Home</a>
+                    <a href="shop.html" class="block text-gold font-semibold transition">Shop</a>
+                    <a href="about.html" class="block hover:text-gold transition">About</a>
+                    <a href="contact.html" class="block hover:text-gold transition">Contact</a>
+                    <a href="blog.html" class="block hover:text-gold transition">Blog</a>
+                    <a href="search.html" class="text-gold font-semibold transition">Search</a>
+
+                    <div class="flex space-x-4 pt-2">
+                        <a href="#" class="hover:text-gold"><i class="fas fa-search"></i></a>
+                        <a href="#" class="hover:text-gold"><i class="fas fa-user"></i></a>
+                        <a href="cart.html" class="hover:text-gold relative">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="absolute -top-2 -right-2 bg-gold text-black rounded-full w-5 h-5 flex items-center justify-center text-xs">3</span>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
