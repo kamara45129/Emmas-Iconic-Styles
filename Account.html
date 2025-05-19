@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emma's Iconic Styles - Shop Fashion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 40;
+        }
+        
+        .overlay.active {
+            display: block;
+        }
+        
+        .cart-panel {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 96%;
+            max-width: 400px;
+            height: 100%;
+            background-color: white;
+            z-index: 50;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+        }
+        
+        .cart-panel.open {
+            right: 0;
+        }
+        
+        .auth-panel {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 96%;
+            max-width: 400px;
+            height: 100%;
+            background-color: white;
+            z-index: 50;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+        }
+        
+        .auth-panel.open {
+            right: 0;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.3s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .account-dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            z-index: 30;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+        
+        .account-dropdown.show {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Overlay -->
+    <div class="overlay"></div>
+    
+    <!-- Cart Panel -->
+    <div class="cart-panel">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">Your Cart</h2>
+                <button id="closeCart" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="cartItemsContainer">
+                <!-- Cart items will be inserted here -->
+            </div>
+            <div class="border-t pt-4 mt-4">
+                <div class="flex justify-between mb-2">
+                    <span class="font-semibold">Subtotal:</span>
+                    <span id="cartSubtotal" class="font-bold">$0.00</span>
+                </div>
+                <button class="w-full bg-purple-600 text-white py-3 rounded-lg font-bold hover:bg-purple-700 transition">
+                    Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Auth Panel -->
+    <div class="auth-panel">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold" id="authPanelTitle">Login</h2>
+                <button id="closeAuth" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <!-- Login Form -->
+            <div id="loginForm" class="fade-in">
+                <div class="mb-4">
+                    <label class="block text-gray-700 mb-2" for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 mb-2" for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                </div>
+                <button id="loginBtn" class="w-full bg-purple-600 text-white py-3 rounded-lg font-bold hover:bg-purple-700 transition mb-4">
+                    Login
+                </button>
+                <p class="text-center text-gray-600">
+                    Don't have an account? 
+                    <button id="showRegister" class="text-purple-600 font-semibold hover:underline">Register here</button>
+                </p>
+            </div>
+            
+            <!-- Register Form -->
+            <div id="registerForm" class="hidden fade-in">
+                <div class="mb-4">
+                    <label class="block text-gray-700 mb-2" for="registerName">Full Name</label>
+                    <input type="text" id="registerName" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 mb-2" for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 mb-2" for="registerPassword">Password</label>
+                    <input type="password" id="registerPassword" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 mb-2" for="registerConfirmPassword">Confirm Password</label>
+                    <input type="password" id="registerConfirmPassword" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                </div>
+                <button id="registerBtn" class="w-full bg-purple-600 text-white py-3 rounded-lg font-bold hover:bg-purple-700 transition mb-4">
+                    Register
+                </button>
+                <p class="text-center text-gray-600">
+                    Already have an account? 
+                    <button id="showLogin" class="text-purple-600 font-semibold hover:underline">Login here</button>
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-20">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="#" class="text-2xl font-bold text-purple-600">Emma's Iconic Styles</a>
+            </div>
+            
+            <div class="flex items-center space-x-6">
+                <div class="relative">
+                    <button id="accountBtn" class="flex items-center space-x-2 text-gray-700 hover:text-purple-600 transition">
+                        <i class="fas fa-user"></i>
+                        <span id="accountText">Account</span>
+                    </button>
+                    <div id="accountDropdown" class="account-dropdown">
+                        <div id="loggedOutMenu" class="py-2">
+                            <button id="loginBtnNav" class="w-full text-left px-4 py-2 hover:bg-gray-100">Login</button>
+                            <button id="registerBtnNav" class="w-full text-left px-4 py-2 hover:bg-gray-100">Register</button>
+                        </div>
+                        <div id="loggedInMenu" class="py-2 hidden">
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">My Profile</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Order History</a>
+                            <button id="logoutBtn" class="w-full text-left px-4 py-2 hover:bg-gray-100">Logout</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="cartBtn" class="relative text-gray-700 hover:text-purple-600 transition">
+                    <i class="fas fa-shopping-bag text-xl"></i>
+                    <span id="cartCount" class="absolute -top-2 -right-2 bg-purple-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center hidden">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-purple-500 to-pink-500 text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Discover Your Iconic Style</h1>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Elevate your wardrobe with our exclusive collection of fashion pieces</p>
+            <button class="bg-white text-purple-600 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition">
+                Shop Now
+            </button>
+        </div>
+    </section>
+    
+    <!-- Featured Products -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center">Featured Collection</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Product 1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Product 1" class="w-full h-64 object-cover">
+                        <button class="add-to-cart absolute bottom-4 right-4 bg-white p-3 rounded-full shadow-md hover:bg-purple-600 hover:text-white transition"
+                                data-id="1" 
+                                data-name="Classic Black Dress" 
+                                data-price="59.99" 
+                                data-image="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Classic Black Dress</h3>
+                        <p class="text-gray-600 mb-4">The perfect little black dress for any occasion</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-purple-600 font-bold">$59.99</span>
+                            <div class="flex space-x-2">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <span class="text-gray-600">4.8</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1136&q=80" alt="Product 2" class="w-full h-64 object-cover">
+                        <button class="add-to-cart absolute bottom-4 right-4 bg-white p-3 rounded-full shadow-md hover:bg-purple-600 hover:text-white transition"
+                                data-id="2" 
+                                data-name="Elegant Blouse" 
+                                data-price="39.99" 
+                                data-image="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1136&q=80">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Elegant Blouse</h3>
+                        <p class="text-gray-600 mb-4">Lightweight and comfortable for all-day wear</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-purple-600 font-bold">$39.99</span>
+                            <div class="flex space-x-2">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <span class="text-gray-600">4.6</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1135&q=80" alt="Product 3" class="w-full h-64 object-cover">
+                        <button class="add-to-cart absolute bottom-4 right-4 bg-white p-3 rounded-full shadow-md hover:bg-purple-600 hover:text-white transition"
+                                data-id="3" 
+                                data-name="Denim Jacket" 
+                                data-price="49.99" 
+                                data-image="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1135&q=80">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Denim Jacket</h3>
+                        <p class="text-gray-600 mb-4">Classic denim jacket with modern fit</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-purple-600 font-bold">$49.99</span>
+                            <div class="flex space-x-2">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <span class="text-gray-600">4.9</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Newsletter -->
+    <section class="bg-gray-100 py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Stay Updated</h2>
+            <p class="text-gray-600 mb-8 max-w-2xl mx-auto">Subscribe to our newsletter for exclusive offers and the latest fashion trends</p>
+            <div class="max-w-md mx-auto flex">
+                <input type="email" placeholder="Your email address" class="flex-1 px-4 py-3 rounded-l-lg border focus:outline-none focus:ring-2 focus:ring-purple-500">
+                <button class="bg-purple-600 text-white px-6 py-3 rounded-r-lg font-bold hover:bg-purple-700 transition">
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Emma's Iconic Styles</h3>
+                    <p class="text-gray-400">Elevating your wardrobe with timeless fashion pieces since 2015.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Shop</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">New Arrivals</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Bestsellers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Sale</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Accessories</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Help</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Customer Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Shipping Info</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Returns & Exchanges</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Size Guide</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Connect</h4>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                    <p class="text-gray-400">contact@emmasiconicstyles.com</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 Emma's Iconic Styles. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Store cart items in memory
+        let cartItems = [];
+        
+        // Store user data in memory (in a real app, this would be server-side)
+        let users = [];
+        let currentUser = null;
+        
+        // DOM references
+        const cartBtn = document.getElementById('cartBtn');
+        const cartCount = document.getElementById('cartCount');
+        const overlay = document.querySelector('.overlay');
+        const cartPanel = document.querySelector('.cart-panel');
+        const closeCart = document.getElementById('closeCart');
+        const cartItemsContainer = document.getElementById('cartItemsContainer');
+        const cartSubtotal = document.getElementById('cartSubtotal');
+        
+        // Auth elements
+        const authPanel = document.querySelector('.auth-panel');
+        const closeAuth = document.getElementById('closeAuth');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const showRegister = document.getElementById('showRegister');
+        const showLogin = document.getElementById('showLogin');
+        const loginBtn = document.getElementById('loginBtn');
+        const registerBtn = document.getElementById('registerBtn');
+        const authPanelTitle = document.getElementById('authPanelTitle');
+        
+        // Account dropdown elements
+        const accountBtn = document.getElementById('accountBtn');
+        const accountDropdown = document.getElementById('accountDropdown');
+        const accountText = document.getElementById('accountText');
+        const loggedOutMenu = document.getElementById('loggedOutMenu');
+        const loggedInMenu = document.getElementById('loggedInMenu');
+        const loginBtnNav = document.getElementById('loginBtnNav');
+        const registerBtnNav = document.getElementById('registerBtnNav');
+        const logoutBtn = document.getElementById('logoutBtn');
+        
+        // Open cart
+        cartBtn.addEventListener('click', () => {
+            cartPanel.classList.add('open');
+            overlay.classList.add('active');
+        });
+        
+        // Close cart
+        closeCart.addEventListener('click', () => {
+            cartPanel.classList.remove('open');
+            overlay.classList.remove('active');
+        });
+        
+        // Close cart when clicking outside
+        overlay.addEventListener('click', () => {
+            cartPanel.classList.remove('open');
+            authPanel.classList.remove('open');
+            overlay.classList.remove('active');
+        });
+        
+        // Add to Cart Function
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const item = {
+                    id: button.getAttribute('data-id'),
+                    name: button.getAttribute('data-name'),
+                    price: parseFloat(button.getAttribute('data-price')),
+                    image: button.getAttribute('data-image'),
+                };
+                
+                // Check if item is already in cart
+                const existingItem = cartItems.find(i => i.id === item.id);
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    item.quantity = 1;
+                    cartItems.push(item);
+                }
+                
+                // Update UI
+                updateCartUI();
+                
+                // Show success feedback
+                const originalContent = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check"></i>';
+                button.classList.add('bg-green-500', 'text-white');
+                button.classList.remove('hover:bg-purple-600', 'hover:text-white');
+                
+                setTimeout(() => {
+                    button.innerHTML = originalContent;
+                    button.classList.remove('bg-green-500', 'text-white');
+                    button.classList.add('hover:bg-purple-600', 'hover:text-white');
+                }, 1000);
+            });
+        });
+        
+        function updateCartUI() {
+            // Update cart count
+            const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            cartCount.classList.remove('hidden');
+            
+            // Generate HTML for cart items
+            let cartHTML = '';
+            let subtotal = 0;
+            
+            cartItems.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+                
+                cartHTML += `
+                    <div class="flex items-center mb-4 pb-4 border-b">
+                        <img src="${item.image}" alt="${item.name}" class="w-16 h-16 rounded object-cover mr-4">
+                        <div class="flex-1">
+                            <h4 class="font-semibold">${item.name}</h4>
+                            <div class="flex items-center mt-2">
+                                <button class="quantity-btn" data-id="${item.id}" data-action="decrease" class="text-gray-500 hover:text-purple-600">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <span class="mx-3">${item.quantity}</span>
+                                <button class="quantity-btn" data-id="${item.id}" data-action="increase" class="text-gray-500 hover:text-purple-600">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                            <p class="text-purple-600 font-bold mt-2">$${itemTotal.toFixed(2)}</p>
+                        </div>
+                        <button class="remove-btn text-gray-400 hover:text-red-500" data-id="${item.id}">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                `;
+            });
+            
+            if (cartItems.length === 0) {
+                cartHTML = '<p class="text-gray-600 text-center py-8">Your cart is empty</p>';
+            }
+            
+            cartItemsContainer.innerHTML = cartHTML;
+            cartSubtotal.textContent = `$${subtotal.toFixed(2)}`;
+            
+            // Add event listeners to quantity buttons
+            document.querySelectorAll('.quantity-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = btn.getAttribute('data-id');
+                    const action = btn.getAttribute('data-action');
+                    const item = cartItems.find(i => i.id === id);
+                    
+                    if (action === 'increase') {
+                        item.quantity += 1;
+                    } else if (action === 'decrease' && item.quantity > 1) {
+                        item.quantity -= 1;
+                    }
+                    
+                    updateCartUI();
+                });
+            });
+            
+            // Add event listeners to remove buttons
+            document.querySelectorAll('.remove-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = btn.getAttribute('data-id');
+                    cartItems = cartItems.filter(i => i.id !== id);
+                    updateCartUI();
+                });
+            });
+        }
+        
+        // Account dropdown toggle
+        accountBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            accountDropdown.classList.toggle('show');
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', () => {
+            accountDropdown.classList.remove('show');
+        });
+        
+        // Prevent dropdown from closing when clicking inside
+        accountDropdown.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+        
+        // Show login panel
+        loginBtnNav.addEventListener('click', () => {
+            authPanelTitle.textContent = 'Login';
+            loginForm.classList.remove('hidden');
+            registerForm.classList.add('hidden');
+            authPanel.classList.add('open');
+            overlay.classList.add('active');
+            accountDropdown.classList.remove('show');
+        });
+        
+        // Show register panel
+        registerBtnNav.addEventListener('click', () => {
+            authPanelTitle.textContent = 'Register';
+            registerForm.classList.remove('hidden');
+            loginForm.classList.add('hidden');
+            authPanel.classList.add('open');
+            overlay.classList.add('active');
+            accountDropdown.classList.remove('show');
+        });
+        
+        // Close auth panel
+        closeAuth.addEventListener('click', () => {
+            authPanel.classList.remove('open');
+            overlay.classList.remove('active');
+        });
+        
+        // Toggle between login and register forms
+        showRegister.addEventListener('click', () => {
+            authPanelTitle.textContent = 'Register';
+            loginForm.classList.add('hidden');
+            registerForm.classList.remove('hidden');
+        });
+        
+        showLogin.addEventListener('click', () => {
+            authPanelTitle.textContent = 'Login';
+            registerForm.classList.add('hidden');
+            loginForm.classList.remove('hidden');
+        });
+        
+        // Login functionality
+        loginBtn.addEventListener('click', () => {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            // Simple validation
+            if (!email || !password) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            // Check if user exists
+            const user = users.find(u => u.email === email && u.password === password);
+            
+            if (user) {
+                currentUser = user;
+                updateAuthUI();
+                authPanel.classList.remove('open');
+                overlay.classList.remove('active');
+                alert('Login successful!');
+            } else {
+                alert('Invalid email or password');
+            }
+        });
+        
+        // Register functionality
+        registerBtn.addEventListener('click', () => {
+            const name = document.getElementById('registerName').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('registerConfirmPassword').value;
+            
+            // Simple validation
+            if (!name || !email || !password || !confirmPassword) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                alert('Passwords do not match');
+                return;
+            }
+            
+            // Check if email is already registered
+            if (users.some(u => u.email === email)) {
+                alert('Email already registered');
+                return;
+            }
+            
+            // Create new user
+            const newUser = {
+                id: Date.now().toString(),
+                name,
+                email,
+                password
+            };
+            
+            users.push(newUser);
+            currentUser = newUser;
+            updateAuthUI();
+            
+            // Switch to login form
+            authPanelTitle.textContent = 'Login';
+            registerForm.classList.add('hidden');
+            loginForm.classList.remove('hidden');
+            
+            alert('Registration successful! You are now logged in.');
+        });
+        
+        // Logout functionality
+        logoutBtn.addEventListener('click', () => {
+            currentUser = null;
+            updateAuthUI();
+            accountDropdown.classList.remove('show');
+            alert('Logged out successfully');
+        });
+        
+        // Update UI based on auth state
+        function updateAuthUI() {
+            if (currentUser) {
+                accountText.textContent = currentUser.name.split(' ')[0];
+                loggedOutMenu.classList.add('hidden');
+                loggedInMenu.classList.remove('hidden');
+            } else {
+                accountText.textContent = 'Account';
+                loggedInMenu.classList.add('hidden');
+                loggedOutMenu.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
