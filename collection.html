@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Emma's Collection</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h2 {
+      text-align: center;
+    }
+    #filters {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    #filters select {
+      padding: 8px;
+      font-size: 16px;
+    }
+    .product {
+      border: 1px solid #ccc;
+      padding: 10px;
+      width: 220px;
+      text-align: center;
+      border-radius: 8px;
+      background: #f9f9f9;
+    }
+    #product-list {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .product img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Emma's Collection</h2>
+
+<!-- Filter Section -->
+<div id="filters">
+  <select id="filter-size">
+    <option value="">All Sizes</option>
+    <option value="S">Small</option>
+    <option value="M">Medium</option>
+    <option value="L">Large</option>
+  </select>
+
+  <select id="filter-color">
+    <option value="">All Colors</option>
+    <option value="Red">Red</option>
+    <option value="Black">Black</option>
+    <option value="Blue">Blue</option>
+  </select>
+
+  <select id="filter-price">
+    <option value="">All Prices</option>
+    <option value="low">Under $50</option>
+    <option value="mid">$50 - $100</option>
+    <option value="high">Over $100</option>
+  </select>
+</div>
+
+<!-- Products Section -->
+<div id="product-list"></div>
+
+<script>
+const products = [
+  {
+    name: "Red Dress",
+    size: "M",
+    color: "Red",
+    price: 45,
+    image: "assets/images/red-dress.jpg"
+  },
+  {
+    name: "Black Top",
+    size: "S",
+    color: "Black",
+    price: 65,
+    image: "assets/images/black-top.jpg"
+  },
+  {
+    name: "Blue Gown",
+    size: "L",
+    color: "Blue",
+    price: 120,
+    image: "assets/images/blue-gown.jpg"
+  }
+];
+
+const productList = document.getElementById("product-list");
+
+function displayProducts(items) {
+  productList.innerHTML = "";
+  items.forEach(p => {
+    productList.innerHTML += `
+      <div class="product">
+        <img src="${p.image}" alt="${p.name}">
+        <h3>${p.name}</h3>
+        <p>Size: ${p.size}</p>
+        <p>Color: ${p.color}</p>
+        <p>$${p.price}</p>
+      </div>
+    `;
+  });
+}
+
+function filterProducts() {
+  const size = document.getElementById("filter-size").value;
+  const color = document.getElementById("filter-color").value;
+  const price = document.getElementById("filter-price").value;
+
+  let filtered = products;
+
+  if (size) filtered = filtered.filter(p => p.size === size);
+  if (color) filtered = filtered.filter(p => p.color === color);
+  if (price === "low") filtered = filtered.filter(p => p.price < 50);
+  if (price === "mid") filtered = filtered.filter(p => p.price >= 50 && p.price <= 100);
+  if (price === "high") filtered = filtered.filter(p => p.price > 100);
+
+  displayProducts(filtered);
+}
+
+document.getElementById("filter-size").onchange = filterProducts;
+document.getElementById("filter-color").onchange = filterProducts;
+document.getElementById("filter-price").onchange = filterProducts;
+
+displayProducts(products); // Initial load
+</script>
+
+</body>
+</html>
