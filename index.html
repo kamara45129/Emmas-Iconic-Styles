@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emma's Iconic Styles – Login</title>
+  <style>
+    body { font-family: sans-serif; margin: 2rem; }
+    form { max-width: 300px; margin-bottom: 1rem; }
+    input, button { width: 100%; padding: 0.5rem; margin: 0.25rem 0; }
+    #protectedContent { border: 1px solid #ccc; padding: 1rem; margin-top: 2rem; display: none; }
+    #logoutBtn { display: none; margin-top: 1rem; }
+  </style>
+</head>
+<body>
+
+  <h1>Login or Sign Up</h1>
+
+  <form id="authForm">
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="password" id="password" placeholder="Password" required />
+    <button type="submit">Log In / Sign Up</button>
+  </form>
+
+  <p id="authStatus">Not logged in</p>
+  <button id="logoutBtn">Logout</button>
+
+  <div id="protectedContent">
+    <h2>Welcome, you're logged in! 🎉</h2>
+    <p>This content is only visible to authenticated users.</p>
+  </div>
+
+  <!-- Load Supabase client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+  <script>
+    // 🔐 Replace these with your Supabase project values:
+    const SUPABASE_URL = 'https://YOUR_PROJECT_URL.supabase.co';
+    const SUPABASE_KEY = 'YOUR_ANON_KEY';
+
+    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    const authForm = document.getElementById('authForm');
+    const authStatus = document.getElementById('authStatus');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const protectedContent = document.getElementById('protectedContent');
+
+    // Check if user is already logged in
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session) {
+        showLoggedIn(session.user);
+      }
+    });
+
+    // Handle login/signup
+    authForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      let { data, error } = await supabase.auth.signInWithPassword({ email, password });
+
+      if (error) {
+        // If login fails, try sign up
+        const { data: signupData, error: signupError } = await supabase.auth.signUp({ email, password });
+        if (signupError) {
+          authStatus.textContent = 'Signup error: ' + signupError.message;
+        } else {
+          authStatus.textContent = 'Signup successful! Please check your email to confirm.';
+        }
+      } else {
+        showLoggedIn(data.user);
+      }
+    });
+
+    // Logout
+    logoutBtn.addEventListener('click', async () => {
+      await supabase.auth.signOut();
+      authStatus.textContent = 'Logged out.';
+      logoutBtn.style.display = 'none';
+      protectedContent.style.display = 'none';
+    });
+
+    // Update UI for logged-in users
+    function showLoggedIn(user) {
+      authStatus.textContent = `Logged in as ${user.email}`;
+      logoutBtn.style.display = 'inline-block';
+      protectedContent.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
