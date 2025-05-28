@@ -63,6 +63,417 @@
      </style>
 </head>
 <body class="bg-white text-black font-sans">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emma's Iconic Styles - Shop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .product-card:hover {
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .product-image {
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .product-card:hover .product-image {
+            transform: scale(1.03);
+        }
+        .discount-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ef4444;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-tshirt text-2xl text-pink-500"></i>
+                <span class="text-xl font-bold text-gray-800">Emma's Iconic Styles</span>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#" class="text-gray-600 hover:text-pink-500">Home</a>
+                <a href="#" class="text-pink-500 font-medium">Shop</a>
+                <a href="#" class="text-gray-600 hover:text-pink-500">Collections</a>
+                <a href="#" class="text-gray-600 hover:text-pink-500">About</a>
+                <a href="#" class="text-gray-600 hover:text-pink-500">Contact</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="#" class="text-gray-600 hover:text-pink-500">
+                    <i class="fas fa-search"></i>
+                </a>
+                <a href="#" class="text-gray-600 hover:text-pink-500">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="ml-1">(0)</span>
+                </a>
+                <a href="#" class="hidden md:block bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600 transition">
+                    Login
+                </a>
+                <button class="md:hidden text-gray-600">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="bg-gradient-to-r from-pink-100 to-purple-100 py-12">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Shop Our Latest Collection</h1>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
+                Discover trendy fashion pieces that will elevate your wardrobe. No login required to browse and shop!
+            </p>
+            <div class="flex justify-center space-x-4">
+                <a href="#featured" class="bg-pink-500 text-white px-6 py-3 rounded-full hover:bg-pink-600 transition">
+                    Shop Now
+                </a>
+                <a href="#new-arrivals" class="border border-pink-500 text-pink-500 px-6 py-3 rounded-full hover:bg-pink-50 transition">
+                    New Arrivals
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Products -->
+    <section id="featured" class="py-12 container mx-auto px-4">
+        <div class="flex justify-between items-center mb-8">
+            <h2 class="text-2xl font-bold text-gray-800">Featured Products</h2>
+            <a href="#" class="text-pink-500 hover:underline">View All</a>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Product 1 -->
+            <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300 relative">
+                <div class="discount-badge">-20%</div>
+                <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                     alt="Floral Summer Dress" class="product-image w-full">
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg mb-1">Floral Summer Dress</h3>
+                    <div class="flex items-center mb-2">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="text-gray-500 text-sm ml-2">(42)</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-pink-500 font-bold">$39.99</span>
+                        <span class="text-gray-400 text-sm line-through ml-2">$49.99</span>
+                    </div>
+                    <button class="mt-3 w-full bg-pink-500 text-white py-2 rounded hover:bg-pink-600 transition">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Product 2 -->
+            <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=725&q=80" 
+                     alt="Denim Jacket" class="product-image w-full">
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg mb-1">Classic Denim Jacket</h3>
+                    <div class="flex items-center mb-2">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <span class="text-gray-500 text-sm ml-2">(36)</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-pink-500 font-bold">$59.99</span>
+                    </div>
+                    <button class="mt-3 w-full bg-pink-500 text-white py-2 rounded hover:bg-pink-600 transition">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Product 3 -->
+            <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300 relative">
+                <div class="discount-badge">-15%</div>
+                <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=736&q=80" 
+                     alt="Striped T-Shirt" class="product-image w-full">
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg mb-1">Striped Cotton T-Shirt</h3>
+                    <div class="flex items-center mb-2">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="text-gray-500 text-sm ml-2">(58)</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-pink-500 font-bold">$24.99</span>
+                        <span class="text-gray-400 text-sm line-through ml-2">$29.99</span>
+                    </div>
+                    <button class="mt-3 w-full bg-pink-500 text-white py-2 rounded hover:bg-pink-600 transition">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Product 4 -->
+            <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                <img src="https://images.unsplash.com/photo-1543076447-215ad9ba6923?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" 
+                     alt="High-Waisted Jeans" class="product-image w-full">
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg mb-1">High-Waisted Jeans</h3>
+                    <div class="flex items-center mb-2">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="text-gray-500 text-sm ml-2">(47)</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-pink-500 font-bold">$49.99</span>
+                    </div>
+                    <button class="mt-3 w-full bg-pink-500 text-white py-2 rounded hover:bg-pink-600 transition">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Arrivals -->
+    <section id="new-arrivals" class="py-12 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-bold text-gray-800">New Arrivals</h2>
+                <a href="#" class="text-pink-500 hover:underline">View All</a>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Product 5 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1539533018447-63fcce2678e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                         alt="Oversized Blazer" class="product-image w-full">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-1">Oversized Blazer</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="text-gray-500 text-sm ml-2">(12)</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-pink-500 font-bold">$79.99</span>
+                        </div>
+                        <button class="mt-3 w-full bg-pink-500 text-white py-2 rounded hover:bg-pink-600 transition">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Product 6 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300 relative">
+                    <div class="discount-badge">New</div>
+                    <img src="https://images.unsplash.com/photo-1595341595379-cf0f0a13c3c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                         alt="Silk Scarf" class="product-image w-full">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-1">Printed Silk Scarf</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-500 text-sm ml-2">(8)</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-pink-500 font-bold">$29.99</span>
+                        </div>
+                        <button class="mt-3 w-full bg-pink-500 text-white py-2 rounded hover:bg-pink-600 transition">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Product 7 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=736&q=80" 
+                         alt="Leather Crossbody Bag" class="product-image w-full">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-1">Leather Crossbody Bag</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="text-gray-500 text-sm ml-2">(5)</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-pink-500 font-bold">$65.99</span>
+                        </div>
+                        <button class="mt-3 w-full bg-pink-500 text-white py-2 rounded hover:bg-pink-600 transition">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Product 8 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300 relative">
+                    <div class="discount-badge">-10%</div>
+                    <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                         alt="Knit Sweater" class="product-image w-full">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-1">Chunky Knit Sweater</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="text-gray-500 text-sm ml-2">(15)</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-pink-500 font-bold">$45.99</span>
+                            <span class="text-gray-400 text-sm line-through ml-2">$50.99</span>
+                        </div>
+                        <button class="mt-3 w-full bg-pink-500 text-white py-2 rounded hover:bg-pink-600 transition">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="py-12 container mx-auto px-4">
+        <h2 class="text-2xl font-bold text-gray-800 mb-8 text-center">Shop by Category</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <a href="#" class="category-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300 hover:shadow-lg">
+                <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                     alt="Dresses" class="h-40 w-full object-cover">
+                <div class="p-4 text-center">
+                    <h3 class="font-semibold text-lg">Dresses</h3>
+                    <p class="text-gray-500 text-sm">Shop Now</p>
+                </div>
+            </a>
+            <a href="#" class="category-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300 hover:shadow-lg">
+                <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=725&q=80" 
+                     alt="Tops" class="h-40 w-full object-cover">
+                <div class="p-4 text-center">
+                    <h3 class="font-semibold text-lg">Tops</h3>
+                    <p class="text-gray-500 text-sm">Shop Now</p>
+                </div>
+            </a>
+            <a href="#" class="category-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300 hover:shadow-lg">
+                <img src="https://images.unsplash.com/photo-1543076447-215ad9ba6923?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" 
+                     alt="Bottoms" class="h-40 w-full object-cover">
+                <div class="p-4 text-center">
+                    <h3 class="font-semibold text-lg">Bottoms</h3>
+                    <p class="text-gray-500 text-sm">Shop Now</p>
+                </div>
+            </a>
+            <a href="#" class="category-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300 hover:shadow-lg">
+                <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=736&q=80" 
+                     alt="Accessories" class="h-40 w-full object-cover">
+                <div class="p-4 text-center">
+                    <h3 class="font-semibold text-lg">Accessories</h3>
+                    <p class="text-gray-500 text-sm">Shop Now</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-12 bg-pink-50">
+        <div class="container mx-auto px-4 text-center max-w-2xl">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Join Our Newsletter</h2>
+            <p class="text-gray-600 mb-6">Subscribe to get updates on new arrivals, special offers and fashion tips.</p>
+            <div class="flex flex-col sm:flex-row gap-2 justify-center">
+                <input type="email" placeholder="Your email address" class="px-4 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent flex-grow max-w-md">
+                <button class="bg-pink-500 text-white px-6 py-3 rounded-full hover:bg-pink-600 transition whitespace-nowrap">
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-tshirt text-pink-500 mr-2"></i>
+                        Emma's Iconic Styles
+                    </h3>
+                    <p class="text-gray-400">Your destination for trendy and affordable fashion.</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-pink-500">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-pink-500">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-pink-500">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-pink-500">
+                            <i class="fab fa-pinterest"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Shop</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-pink-500">All Products</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-pink-500">New Arrivals</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-pink-500">Featured</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-pink-500">Sale</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Customer Service</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-pink-500">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-pink-500">FAQs</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-pink-500">Shipping & Returns</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-pink-500">
+</html>
+    
     <!-- Navigation -->
     <nav class="bg-black text-white sticky top-0 z-50 shadow-lg">
         <div class="container mx-auto px-4 py-3">
