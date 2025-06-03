@@ -1318,3 +1318,1357 @@
     </script>
 </body>
 </html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emmas Iconic Style | Premium Women's Footwear</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS for elements Tailwind can't handle easily */
+        .hero-image {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1463100099107-aa0980c362e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+        }
+        
+        .product-card:hover .product-overlay {
+            opacity: 1;
+        }
+        
+        .hamburger {
+            cursor: pointer;
+            width: 24px;
+            height: 24px;
+            transition: all 0.25s;
+            position: relative;
+        }
+        
+        .hamburger-top,
+        .hamburger-middle,
+        .hamburger-bottom {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 24px;
+            height: 2px;
+            background: #000;
+            transform: rotate(0);
+            transition: all 0.5s;
+        }
+        
+        .hamburger-middle {
+            transform: translateY(7px);
+        }
+        
+        .hamburger-bottom {
+            transform: translateY(14px);
+        }
+        
+        .open .hamburger-top {
+            transform: rotate(45deg) translateY(6px) translate(6px);
+        }
+        
+        .open .hamburger-middle {
+            display: none;
+        }
+        
+        .open .hamburger-bottom {
+            transform: rotate(-45deg) translateY(6px) translate(-6px);
+        }
+        
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .mobile-menu.open {
+            max-height: 500px;
+        }
+        
+        .magnify {
+            position: relative;
+            cursor: none;
+        }
+        
+        .magnify-image {
+            transition: transform 0.3s;
+        }
+        
+        .magnify:hover .magnify-image {
+            transform: scale(1.05);
+        }
+        
+        .zoom-lens {
+            position: absolute;
+            border: 2px solid rgba(255,255,255,0.5);
+            background-repeat: no-repeat;
+            display: none;
+            pointer-events: none;
+        }
+        
+        @media (max-width: 1023px) {
+            .hero-image {
+                height: 60vh;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .hero-image {
+                height: 50vh;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="#" class="text-2xl font-bold text-pink-600 tracking-wide">
+                    <span class="text-black">Emmas</span> Iconic Style
+                </a>
+            </div>
+            
+            <div class="hidden lg:flex space-x-8 items-center">
+                <nav>
+                    <ul class="flex space-x-8">
+                        <li><a href="#" class="font-medium hover:text-pink-600 transition">Home</a></li>
+                        <li><a href="#shop" class="font-medium hover:text-pink-600 transition">Shop</a></li>
+                        <li><a href="#blog" class="font-medium hover:text-pink-600 transition">Blog</a></li>
+                        <li><a href="#gallery" class="font-medium hover:text-pink-600 transition">Gallery</a></li>
+                        <li><a href="#about" class="font-medium hover:text-pink-600 transition">About</a></li>
+                        <li><a href="#contact" class="font-medium hover:text-pink-600 transition">Contact</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="flex items-center space-x-4 ml-8">
+                    <button id="search-btn" class="hover:text-pink-600 transition">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <a href="#" class="hover:text-pink-600 transition">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <a href="#" class="hover:text-pink-600 transition relative">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="absolute -top-2 -right-2 bg-pink-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Mobile menu button -->
+            <div class="lg:hidden flex items-center space-x-4">
+                <button id="search-btn-mobile" class="hover:text-pink-600 transition">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button id="menu-btn" class="hamburger focus:outline-none">
+                    <span class="hamburger-top"></span>
+                    <span class="hamburger-middle"></span>
+                    <span class="hamburger-bottom"></span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="mobile-menu lg:hidden bg-white">
+            <div class="container mx-auto px-4 pt-2 pb-8">
+                <nav>
+                    <ul class="flex flex-col space-y-4">
+                        <li><a href="#" class="block py-2 font-medium hover:text-pink-600 transition">Home</a></li>
+                        <li><a href="#shop" class="block py-2 font-medium hover:text-pink-600 transition">Shop</a></li>
+                        <li><a href="#blog" class="block py-2 font-medium hover:text-pink-600 transition">Blog</a></li>
+                        <li><a href="#gallery" class="block py-2 font-medium hover:text-pink-600 transition">Gallery</a></li>
+                        <li><a href="#about" class="block py-2 font-medium hover:text-pink-600 transition">About</a></li>
+                        <li><a href="#contact" class="block py-2 font-medium hover:text-pink-600 transition">Contact</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="mt-6 pt-6 border-t border-gray-200">
+                    <a href="#" class="block py-2 hover:text-pink-600 transition">
+                        <i class="fas fa-user mr-2"></i> My Account
+                    </a>
+                    <a href="#" class="block py-2 hover:text-pink-600 transition relative">
+                        <i class="fas fa-shopping-bag mr-2"></i> Cart
+                        <span class="ml-4 bg-pink-600 text-white text-xs rounded-full h-5 w-5 inline-flex items-center justify-center">3</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Search overlay -->
+        <div id="search-overlay" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden">
+            <div class="container mx-auto px-4 py-20">
+                <div class="max-w-3xl mx-auto relative">
+                    <input type="text" placeholder="Search for shoes, brands, styles..." 
+                           class="w-full py-4 px-6 text-lg rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+                    <button id="close-search" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-pink-600">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+                <div class="mt-8 max-w-3xl mx-auto bg-white rounded-lg p-6 hidden" id="search-results">
+                    <h3 class="font-bold text-lg mb-4">Search Results</h3>
+                    <div class="space-y-3">
+                        <a href="#" class="block hover:bg-gray-100 p-2 rounded">Classic Black Pumps</a>
+                        <a href="#" class="block hover:bg-gray-100 p-2 rounded">Summer Sandals Collection</a>
+                        <a href="#" class="block hover:bg-gray-100 p-2 rounded">Boots for Fall</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-image flex items-center">
+        <div class="container mx-auto px-4 text-white">
+            <div class="max-w-xl">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Step Into <span class="text-pink-300">Iconic Style</span></h1>
+                <p class="text-lg md:text-xl mb-8">Discover the perfect blend of comfort and sophistication with our premium women's footwear collection.</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#shop" class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 text-center">Shop Now</a>
+                    <a href="#" class="bg-transparent hover:bg-white hover:text-black border-2 border-white text-white font-bold py-3 px-8 rounded-full transition duration-300 text-center">Visit Store</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Our Collections</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <a href="#" class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Heels" class="w-full h-64 object-cover transition duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <h3 class="text-white text-2xl font-bold">Heels</h3>
+                    </div>
+                </a>
+                <a href="#" class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1600269452121-4f2416e55c28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1065&q=80" 
+                         alt="Flats" class="w-full h-64 object-cover transition duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <h3 class="text-white text-2xl font-bold">Flats</h3>
+                    </div>
+                </a>
+                <a href="#" class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" 
+                         alt="Boots" class="w-full h-64 object-cover transition duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <h3 class="text-white text-2xl font-bold">Boots</h3>
+                    </div>
+                </a>
+                <a href="#" class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=998&q=80" 
+                         alt="Sandals" class="w-full h-64 object-cover transition duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <h3 class="text-white text-2xl font-bold">Sandals</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section id="shop" class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col sm:flex-row justify-between items-center mb-12">
+                <h2 class="text-3xl font-bold">Featured Products</h2>
+                <div class="mt-4 sm:mt-0">
+                    <div class="flex space-x-2">
+                        <button id="grid-view" class="p-2 bg-pink-600 text-white rounded">
+                            <i class="fas fa-th"></i>
+                        </button>
+                        <button id="list-view" class="p-2 bg-gray-200 hover:bg-gray-300 rounded">
+                            <i class="fas fa-list"></i>
+                        </button>
+                        <select class="border p-2 rounded focus:outline-none focus:ring-2 focus:ring-pink-500">
+                            <option>Sort by: Featured</option>
+                            <option>Price: Low to High</option>
+                            <option>Price: High to Low</option>
+                            <option>Newest Arrivals</option>
+                            <option>Best Sellers</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Product 1 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                    <div class="relative overflow-hidden">
+                        <div class="magnify cursor-zoom-in">
+                            <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" 
+                                 alt="Elegant Black Heels" class="w-full h-64 object-cover magnify-image">
+                            <span class="bg-pink-600 text-white text-xs font-semibold px-2 py-1 rounded absolute top-2 right-2">NEW</span>
+                        </div>
+                        <div class="product-overlay absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 transition duration-300">
+                            <button class="bg-white text-black px-6 py-2 rounded-full font-medium hover:bg-pink-600 hover:text-white transition">
+                                Quick View
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="font-bold text-lg">Elegant Black Heels</h3>
+                                <p class="text-gray-600">Classic Collection</p>
+                            </div>
+                            <div class="text-pink-600 font-bold">$129.99</div>
+                        </div>
+                        <div class="mt-4 flex items-center justify-between">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span class="text-gray-600 text-sm ml-1">(28)</span>
+                            </div>
+                            <button class="text-gray-600 hover:text-pink-600 transition">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                        <button class="mt-4 w-full bg-pink-600 hover:bg-pink-700 text-white font-medium py-2 px-4 rounded transition">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                    <div class="relative overflow-hidden">
+                        <div class="magnify cursor-zoom-in">
+                            <img src="https://images.unsplash.com/photo-1562273138-f46be4ebdf33?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80" 
+                                 alt="White Summer Sandals" class="w-full h-64 object-cover magnify-image">
+                            <span class="bg-pink-600 text-white text-xs font-semibold px-2 py-1 rounded absolute top-2 right-2">BESTSELLER</span>
+                        </div>
+                        <div class="product-overlay absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 transition duration-300">
+                            <button class="bg-white text-black px-6 py-2 rounded-full font-medium hover:bg-pink-600 hover:text-white transition">
+                                Quick View
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="font-bold text-lg">White Summer Sandals</h3>
+                                <p class="text-gray-600">Beach Collection</p>
+                            </div>
+                            <div class="text-pink-600 font-bold">$89.99 <span class="text-gray-400 line-through text-sm">$109.99</span></div>
+                        </div>
+                        <div class="mt-4 flex items-center justify-between">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span class="text-gray-600 text-sm ml-1">(42)</span>
+                            </div>
+                            <button class="text-gray-600 hover:text-pink-600 transition">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                        <button class="mt-4 w-full bg-pink-600 hover:bg-pink-700 text-white font-medium py-2 px-4 rounded transition">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                    <div class="relative overflow-hidden">
+                        <div class="magnify cursor-zoom-in">
+                            <img src="https://images.unsplash.com/photo-1597045566677-8cf032ed6634?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80" 
+                                 alt="Brown Leather Boots" class="w-full h-64 object-cover magnify-image">
+                        </div>
+                        <div class="product-overlay absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 transition duration-300">
+                            <button class="bg-white text-black px-6 py-2 rounded-full font-medium hover:bg-pink-600 hover:text-white transition">
+                                Quick View
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="font-bold text-lg">Brown Leather Boots</h3>
+                                <p class="text-gray-600">Fall Collection</p>
+                            </div>
+                            <div class="text-pink-600 font-bold">$159.99</div>
+                        </div>
+                        <div class="mt-4 flex items-center justify-between">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="text-gray-600 text-sm ml-1">(15)</span>
+                            </div>
+                            <button class="text-gray-600 hover:text-pink-600 transition">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                        <button class="mt-4 w-full bg-pink-600 hover:bg-pink-700 text-white font-medium py-2 px-4 rounded transition">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                    <div class="relative overflow-hidden">
+                        <div class="magnify cursor-zoom-in">
+                            <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80" 
+                                 alt="Pink Ballet Flats" class="w-full h-64 object-cover magnify-image">
+                            <span class="bg-pink-600 text-white text-xs font-semibold px-2 py-1 rounded absolute top-2 right-2">LIMITED</span>
+                        </div>
+                        <div class="product-overlay absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 transition duration-300">
+                            <button class="bg-white text-black px-6 py-2 rounded-full font-medium hover:bg-pink-600 hover:text-white transition">
+                                Quick View
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="font-bold text-lg">Pink Ballet Flats</h3>
+                                <p class="text-gray-600">Comfort Collection</p>
+                            </div>
+                            <div class="text-pink-600 font-bold">$79.99</div>
+                        </div>
+                        <div class="mt-4 flex items-center justify-between">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <i class="far fa-star"></i>
+                                <span class="text-gray-600 text-sm ml-1">(36)</span>
+                            </div>
+                            <button class="text-gray-600 hover:text-pink-600 transition">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                        <button class="mt-4 w-full bg-pink-600 hover:bg-pink-700 text-white font-medium py-2 px-4 rounded transition">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="product-list" class="hidden space-y-6">
+                <!-- Product 1 List View -->
+                <div class="product-card flex flex-col sm:flex-row bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                    <div class="relative sm:w-1/3">
+                        <div class="magnify cursor-zoom-in">
+                            <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" 
+                                 alt="Elegant Black Heels" class="w-full h-64 object-cover magnify-image">
+                            <span class="bg-pink-600 text-white text-xs font-semibold px-2 py-1 rounded absolute top-2 right-2">NEW</span>
+                        </div>
+                    </div>
+                    <div class="p-6 sm:w-2/3">
+                        <div class="flex justify-between">
+                            <div>
+                                <h3 class="font-bold text-xl">Elegant Black Heels</h3>
+                                <p class="text-gray-600 mt-1">Classic Collection</p>
+                                <p class="text-gray-700 mt-4">These timeless black heels feature a sleek design with a comfortable 3-inch heel, perfect for both office and evening wear.</p>
+                            </div>
+                            <div class="text-pink-600 font-bold text-lg">$129.99</div>
+                        </div>
+                        <div class="mt-4 flex items-center justify-between">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span class="text-gray-600 text-sm ml-1">(28 reviews)</span>
+                            </div>
+                            <button class="text-gray-600 hover:text-pink-600 transition ml-4">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                        <div class="mt-6 flex space-x-4">
+                            <button class="flex-1 bg-pink-600 hover:bg-pink-700 text-white font-medium py-2 px-4 rounded transition">
+                                Add to Cart
+                            </button>
+                            <button class="flex-1 bg-transparent border border-pink-600 text-pink-600 hover:bg-pink-50 font-medium py-2 px-4 rounded transition">
+                                Quick View
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 List View -->
+                <div class="product-card flex flex-col sm:flex-row bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                    <div class="relative sm:w-1/3">
+                        <div class="magnify cursor-zoom-in">
+                            <img src="https://images.unsplash.com/photo-1562273138-f46be4ebdf33?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80" 
+                                 alt="White Summer Sandals" class="w-full h-64 object-cover magnify-image">
+                            <span class="bg-pink-600 text-white text-xs font-semibold px-2 py-1 rounded absolute top-2 right-2">BESTSELLER</span>
+                        </div>
+                    </div>
+                    <div class="p-6 sm:w-2/3">
+                        <div class="flex justify-between">
+                            <div>
+                                <h3 class="font-bold text-xl">White Summer Sandals</h3>
+                                <p class="text-gray-600 mt-1">Beach Collection</p>
+                                <p class="text-gray-700 mt-4">Lightweight and stylish sandals perfect for summer days. The cushioned footbed provides all-day comfort while the adjustable straps ensure a perfect fit.</p>
+                            </div>
+                            <div class="text-pink-600 font-bold text-lg">$89.99 <span class="text-gray-400 line-through text-sm">$109.99</span></div>
+                        </div>
+                        <div class="mt-4 flex items-center justify-between">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span class="text-gray-600 text-sm ml-1">(42 reviews)</span>
+                            </div>
+                            <button class="text-gray-600 hover:text-pink-600 transition ml-4">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                        <div class="mt-6 flex space-x-4">
+                            <button class="flex-1 bg-pink-600 hover:bg-pink-700 text-white font-medium py-2 px-4 rounded transition">
+                                Add to Cart
+                            </button>
+                            <button class="flex-1 bg-transparent border border-pink-600 text-pink-600 hover:bg-pink-50 font-medium py-2 px-4 rounded transition">
+                                Quick View
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block border-2 border-pink-600 text-pink-600 font-bold py-3 px-8 rounded-full hover:bg-pink-600 hover:text-white transition duration-300">
+                    View All Products
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner -->
+    <section class="py-16 bg-gray-900 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Enjoy Free Shipping on Orders Over $100</h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">Sign up for our newsletter and get 10% off your first order!</p>
+            <div class="max-w-md mx-auto flex">
+                <input type="email" placeholder="Your email address" class="flex-1 px-4 py-3 rounded-l focus:outline-none text-gray-800">
+                <button class="bg-pink-600 hover:bg-pink-700 px-6 py-3 rounded-r font-medium transition">Subscribe</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Latest From Our Blog</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Discover styling tips, shoe care advice, and the latest fashion trends from Emma and our team.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Blog Post 1 -->
+                <article class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                    <a href="#">
+                        <img src="https://images.unsplash.com/photo-1542224566-6f43f5971c30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80" 
+                             alt="Summer Shoe Trends" class="w-full h-48 object-cover">
+                    </a>
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 mb-2">
+                            <span>June 15, 2023</span>
+                            <span class="mx-2">•</span>
+                            <span>5 min read</span>
+                        </div>
+                        <h3 class="font-bold text-xl mb-3">
+                            <a href="#" class="hover:text-pink-600 transition">Summer 2023 Shoe Trends You Need to Know</a>
+                        </h3>
+                        <p class="text-gray-600 mb-4">Discover the hottest shoe trends for this summer season and how to style them for different occasions.</p>
+                        <a href="#" class="text-pink-600 font-medium hover:text-pink-700 transition">Read More</a>
+                    </div>
+                </article>
+                
+                <!-- Blog Post 2 -->
+                <article class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                    <a href="#">
+                        <img src="https://images.unsplash.com/photo-1556905050-b4a5a4c8c3a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+                             alt="Shoe Care Tips" class="w-full h-48 object-cover">
+                    </a>
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 mb-2">
+                            <span>May 28, 2023</span>
+                            <span class="mx-2">•</span>
+                            <span>7 min read</span>
+                        </div>
+                        <h3 class="font-bold text-xl mb-3">
+                            <a href="#" class="hover:text-pink-600 transition">5 Essential Shoe Care Tips to Make Your Shoes Last Longer</a>
+                        </h3>
+                        <p class="text-gray-600 mb-4">Learn how to properly care for your leather, suede, and fabric shoes to keep them looking new for years to come.</p>
+                        <a href="#" class="text-pink-600 font-medium hover:text-pink-700 transition">Read More</a>
+                    </div>
+                </article>
+                
+                <!-- Blog Post 3 -->
+                <article class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                    <a href="#">
+                        <img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1035&q=80" 
+                             alt="High Heels Guide" class="w-full h-48 object-cover">
+                    </a>
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 mb-2">
+                            <span>April 12, 2023</span>
+                            <span class="mx-2">•</span>
+                            <span>4 min read</span>
+                        </div>
+                        <h3 class="font-bold text-xl mb-3">
+                            <a href="#" class="hover:text-pink-600 transition">The Ultimate Guide to Finding Comfortable High Heels</a>
+                        </h3>
+                        <p class="text-gray-600 mb-4">Our expert tips on selecting heels you can wear all day without sacrificing style or comfort.</p>
+                        <a href="#" class="text-pink-600 font-medium hover:text-pink-700 transition">Read More</a>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block border-2 border-pink-600 text-pink-600 font-bold py-3 px-8 rounded-full hover:bg-pink-600 hover:text-white transition duration-300">
+                    View All Articles
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Lookbook -->
+    <section id="gallery" class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Style Gallery</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Get inspired by how our customers style their favorite Emmas Iconic Style shoes.</p>
+                <div class="flex justify-center space-x-4 mt-6">
+                    <button class="filter-btn px-4 py-2 rounded-full bg-pink-600 text-white" data-filter="all">All</button>
+                    <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300" data-filter="spring">Spring</button>
+                    <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300" data-filter="summer">Summer</button>
+                    <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300" data-filter="fall">Fall</button>
+                    <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300" data-filter="winter">Winter</button>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 gallery-container">
+                <!-- Image 1 -->
+                <div class="gallery-item group relative overflow-hidden rounded-lg spring summer" data-category="spring summer">
+                    <img src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" 
+                         alt="Spring Look" class="w-full h-80 object-cover transition duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="text-center text-white px-4">
+                            <h3 class="font-bold text-xl mb-2">Spring Floral</h3>
+                            <p class="mb-4">Pairing our white sandals with light summer dresses</p>
+                            <a href="#" class="inline-block border border-white text-white px-4 py-2 rounded-full hover:bg-white hover:text-black transition">Shop The Look</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Image 2 -->
+                <div class="gallery-item group relative overflow-hidden rounded-lg summer" data-category="summer">
+                    <img src="https://images.unsplash.com/photo-1575537302964-96cd47c06b1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Summer Look" class="w-full h-80 object-cover transition duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="text-center text-white px-4">
+                            <h3 class="font-bold text-xl mb-2">Summer Beach</h3>
+                            <p class="mb-4">Comfortable sandals for your beach vacation</p>
+                            <a href="#" class="inline-block border border-white text-white px-4 py-2 rounded-full hover:bg-white hover:text-black transition">Shop The Look</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Image 3 -->
+                <div class="gallery-item group relative overflow-hidden rounded-lg fall winter" data-category="fall winter">
+                    <img src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Fall Look" class="w-full h-80 object-cover transition duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="text-center text-white px-4">
+                            <h3 class="font-bold text-xl mb-2">Fall Boots</h3>
+                            <p class="mb-4">Stylish leather boots for crisp autumn days</p>
+                            <a href="#" class="inline-block border border-white text-white px-4 py-2 rounded-full hover:bg-white hover:text-black transition">Shop The Look</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Image 4 -->
+                <div class="gallery-item group relative overflow-hidden rounded-lg spring" data-category="spring">
+                    <img src="https://images.unsplash.com/photo-1520975661595-6453be3f7070?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80" 
+                         alt="Spring Look" class="w-full h-80 object-cover transition duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="text-center text-white px-4">
+                            <h3 class="font-bold text-xl mb-2">Office Chic</h3>
+                            <p class="mb-4">Professional yet fashionable for the workplace</p>
+                            <a href="#" class="inline-block border border-white text-white px-4 py-2 rounded-full hover:bg-white hover:text-black transition">Shop The Look</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Image 5 -->
+                <div class="gallery-item group relative overflow-hidden rounded-lg winter" data-category="winter">
+                    <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80" 
+                         alt="Winter Look" class="w-full h-80 object-cover transition duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="text-center text-white px-4">
+                            <h3 class="font-bold text-xl mb-2">Winter Warmth</h3>
+                            <p class="mb-4">Cozy boots for cold winter days</p>
+                            <a href="#" class="inline-block border border-white text-white px-4 py-2 rounded-full hover:bg-white hover:text-black transition">Shop The Look</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Image 6 -->
+                <div class="gallery-item group relative overflow-hidden rounded-lg summer" data-category="summer">
+                    <img src="https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=930&q=80" 
+                         alt="Summer Look" class="w-full h-80 object-cover transition duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="text-center text-white px-4">
+                            <h3 class="font-bold text-xl mb-2">Weekend Casual</h3>
+                            <p class="mb-4">Relaxed styles for your days off</p>
+                            <a href="#" class="inline-block border border-white text-white px-4 py-2 rounded-full hover:bg-white hover:text-black transition">Shop The Look</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block border-2 border-pink-600 text-pink-600 font-bold py-3 px-8 rounded-full hover:bg-pink-600 hover:text-white transition duration-300">
+                    View Full Gallery
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-10 lg:mb-0 lg:pr-10">
+                    <h2 class="text-3xl font-bold mb-6">Our Story</h2>
+                    <p class="text-gray-600 mb-6">Founded in 2015 by Emma Richardson, Emmas Iconic Style began as a small boutique in downtown Chicago with a simple mission: to provide women with stylish, comfortable footwear that doesn't sacrifice quality for fashion.</p>
+                    <p class="text-gray-600 mb-6">What started as a passion project has grown into a beloved brand with multiple locations across the Midwest and a thriving online store serving customers nationwide.</p>
+                    <p class="text-gray-600 mb-8">Every shoe in our collection is carefully selected by Emma and our team to ensure it meets our high standards for quality, comfort, and timeless design. We believe every woman deserves to feel confident and comfortable in her shoes.</p>
+                    <a href="#" class="inline-block bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-8 rounded-full transition duration-300">
+                        Meet Our Team
+                    </a>
+                </div>
+                <div class="lg:w-1/2">
+                    <div class="relative rounded-lg overflow-hidden shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                             alt="Emma and Team" class="w-full h-auto">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-6 text-white">
+                            <p class="text-xl">Emma (center) with our Chicago store team</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-pink-600 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">What Our Customers Say</h2>
+                <p class="max-w-2xl mx-auto">Don't just take our word for it - hear from women who've experienced the Emmas Iconic Style difference.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white bg-opacity-10 rounded-lg p-8">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="text-sm">5/5</span>
+                    </div>
+                    <p class="mb-6 italic">"I've never owned a more comfortable pair of heels! I wore them to a wedding and danced all night without any pain. Worth every penny."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/43.jpg" 
+                             alt="Sarah J." class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Sarah J.</h4>
+                            <p class="text-sm text-pink-200">Chicago, IL</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-white bg-opacity-10 rounded-lg p-8">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="text-sm">5/5</span>
+                    </div>
+                    <p class="mb-6 italic">"The ballet flats are my go-to for work. So comfortable that I bought them in three colors! The staff at the Boston location are incredibly helpful too."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" 
+                             alt="Michelle T." class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Michelle T.</h4>
+                            <p class="text-sm text-pink-200">Boston, MA</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-white bg-opacity-10 rounded-lg p-8">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="text-sm">4.5/5</span>
+                    </div>
+                    <p class="mb-6 italic">"Ordered the winter boots online and they arrived perfectly packaged. True to size and keep my feet warm in Minnesota winters. Will definitely shop here again!"</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" 
+                             alt="Jenny K." class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Jenny K.</h4>
+                            <p class="text-sm text-pink-200">Minneapolis, MN</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Store Locator -->
+    <section id="contact" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Visit Us or Get In Touch</h2>
+            
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Contact Form -->
+                <div class="lg:w-1/2 bg-white rounded-lg shadow-md p-8">
+                    <h3 class="text-2xl font-bold mb-6">Send Us a Message</h3>
+                    <form>
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-600 mb-2">Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-600 mb-2">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+                        </div>
+                        <div class="mb-4">
+                            <label for="subject" class="block text-gray-600 mb-2">Subject</label>
+                            <select id="subject" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+                                <option>General Inquiry</option>
+                                <option>Order Question</option>
+                                <option>Returns & Exchanges</option>
+                                <option>Product Suggestion</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="block text-gray-600 mb-2">Message</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-4 rounded-lg transition">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Store Info -->
+                <div class="lg:w-1/2">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <!-- Map -->
+                        <div class="h-64 bg-gray-300 relative">
+                            <!-- Map placeholder - would be replaced with actual map integration -->
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <i class="fas fa-map-marker-alt text-4xl text-pink-600"></i>
+                            </div>
+                            <div class="absolute bottom-4 left-4 bg-white p-2 rounded shadow">
+                                <span class="block font-semibold">Chicago Flagship Store</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Store details -->
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-4">Our Locations</h3>
+                            
+                            <div class="space-y-6">
+                                <!-- Chicago -->
+                                <div>
+                                    <h4 class="font-bold text-lg flex items-center">
+                                        <i class="fas fa-store mr-2 text-pink-600"></i>
+                                        Chicago, IL (Flagship)
+                                    </h4>
+                                    <div class="ml-8 mt-2 space-y-1">
+                                        <p><i class="fas fa-map-marker-alt text-gray-500 mr-2"></i> 123 Fashion Ave, Chicago, IL 60601</p>
+                                        <p><i class="fas fa-phone text-gray-500 mr-2"></i> (312) 555-1234</p>
+                                        <p><i class="fas fa-clock text-gray-500 mr-2"></i> Mon-Sat: 10AM-8PM, Sun: 11AM-6PM</p>
+                                        <a href="#" class="inline-block mt-2 text-pink-600 hover:underline">
+                                            <i class="fas fa-directions mr-1"></i> Get Directions
+                                        </a>
+                                    </div>
+                                </div>
+                                
+                                <!-- Boston -->
+                                <div class="pt-4 border-t border-gray-200">
+                                    <h4 class="font-bold text-lg flex items-center">
+                                        <i class="fas fa-store mr-2 text-pink-600"></i>
+                                        Boston, MA
+                                    </h4>
+                                    <div class="ml-8 mt-2 space-y-1">
+                                        <p><i class="fas fa-map-marker-alt text-gray-500 mr-2"></i> 456 Style Street, Boston, MA 02108</p>
+                                        <p><i class="fas fa-phone text-gray-500 mr-2"></i> (617) 555-5678</p>
+                                        <p><i class="fas fa-clock text-gray-500 mr-2"></i> Mon-Sat: 10AM-7PM, Sun: 12PM-5PM</p>
+                                        <a href="#" class="inline-block mt-2 text-pink-600 hover:underline">
+                                            <i class="fas fa-directions mr-1"></i> Get Directions
+                                        </a>
+                                    </div>
+                                </div>
+                                
+                                <!-- Minneapolis -->
+                                <div class="pt-4 border-t border-gray-200">
+                                    <h4 class="font-bold text-lg flex items-center">
+                                        <i class="fas fa-store mr-2 text-pink-600"></i>
+                                        Minneapolis, MN
+                                    </h4>
+                                    <div class="ml-8 mt-2 space-y-1">
+                                        <p><i class="fas fa-map-marker-alt text-gray-500 mr-2"></i> 789 Shoe Lane, Minneapolis, MN 55401</p>
+                                        <p><i class="fas fa-phone text-gray-500 mr-2"></i> (612) 555-9012</p>
+                                        <p><i class="fas fa-clock text-gray-500 mr-2"></i> Coming Summer 2024</p>
+                                        <button disabled class="inline-block mt-2 text-gray-400 cursor-not-allowed">
+                                            <i class="fas fa-directions mr-1"></i> Get Directions (Coming Soon)
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-6 pt-6 border-t border-gray-200">
+                                <h4 class="font-bold text-lg mb-3">Contact Information</h4>
+                                <p class="mb-2"><i class="fas fa-envelope text-gray-500 mr-2"></i> hello@emmasiconicstyle.com</p>
+                                <p class="mb-2"><i class="fas fa-phone text-gray-500 mr-2"></i> 1-800-555-HEEL (4335)</p>
+                                <p class="mb-4"><i class="fas fa-comments text-gray-500 mr-2"></i> Live Chat: Available Mon-Fri 9AM-5PM CST</p>
+                                
+                                <div class="flex space-x-4">
+                                    <a href="#" class="text-gray-700 hover:text-pink-600 transition">
+                                        <i class="fab fa-facebook-f text-2xl"></i>
+                                    </a>
+                                    <a href="#" class="text-gray-700 hover:text-pink-600 transition">
+                                        <i class="fab fa-instagram text-2xl"></i>
+                                    </a>
+                                    <a href="#" class="text-gray-700 hover:text-pink-600 transition">
+                                        <i class="fab fa-pinterest-p text-2xl"></i>
+                                    </a>
+                                    <a href="#" class="text-gray-700 hover:text-pink-600 transition">
+                                        <i class="fab fa-twitter text-2xl"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="mb-4 border-b border-gray-200 pb-4">
+                    <button class="faq-btn flex justify-between items-center w-full text-left font-medium text-lg">
+                        <span>What is your return policy?</span>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer mt-2 text-gray-600 hidden">
+                        <p>We offer free returns within 30 days of purchase. Items must be unworn, in original condition, and in their original packaging. Simply initiate a return through your account or contact our customer service team for assistance. Refunds are processed to the original payment method within 5-7 business days after we receive your return.</p>
+                    </div>
+                </div>
+                
+                <div class="mb-4 border-b border-gray-200 pb-4">
+                    <button class="faq-btn flex justify-between items-center w-full text-left font-medium text-lg">
+                        <span>How do I know which size to order?</span>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer mt-2 text-gray-600 hidden">
+                        <p>We provide detailed size charts for each product to help you find your perfect fit. If you're between sizes or unsure, we recommend sizing up. You can also visit one of our stores for a professional fitting. Don't hesitate to reach out to our customer service team with specific sizing questions about any style.</p>
+                    </div>
+                </div>
+                
+                <div class="mb-4 border-b border-gray-200 pb-4">
+                    <button class="faq-btn flex justify-between items-center w-full text-left font-medium text-lg">
+                        <span>Do you offer international shipping?</span>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer mt-2 text-gray-600 hidden">
+                        <p>Yes, we ship to most countries worldwide. Shipping costs and delivery times vary depending on the destination. International orders may be subject to customs fees, taxes, or duties which are the responsibility of the customer. Please note that international returns are not free - the customer is responsible for return shipping costs.</p>
+                    </div>
+                </div>
+                
+                <div class="mb-4 border-b border-gray-200 pb-4">
+                    <button class="faq-btn flex justify-between items-center w-full text-left font-medium text-lg">
+                        <span>How can I track my order?</span>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer mt-2 text-gray-600 hidden">
+                        <p>Once your order has shipped, you'll receive a confirmation email with tracking information. You can also track your order by logging into your account and viewing your order history. Our standard shipping usually delivers within 3-5 business days in the continental US, while expedited options are available at checkout.</p>
+                    </div>
+                </div>
+                
+                <div class="mb-4 border-b border-gray-200 pb-4">
+                    <button class="faq-btn flex justify-between items-center w-full text-left font-medium text-lg">
+                        <span>Do you offer gift cards?</span>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer mt-2 text-gray-600 hidden">
+                        <p>Yes! Emmas Iconic Style gift cards are available in any denomination from $25 to $500. They can be purchased online or in our stores, and never expire. Gift cards can be redeemed online or in-store, and the remaining balance stays on the card for future purchases. They make the perfect gift for any shoe lover!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block border-2 border-pink-600 text-pink-600 font-bold py-3 px-8 rounded-full hover:bg-pink-600 hover:text-white transition duration-300">
+                    View All FAQs
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <!-- Logo and info -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">
+                        <span>Emmas</span> <span class="text-pink-400">Iconic Style</span>
+                    </h3>
+                    <p class="mb-4 text-gray-400">Premium women's footwear blending timeless elegance with contemporary style since 2015.</p>
+                    <div class="flex space-x-4 mb-6">
+                        <a href="#" class="text-gray-400 hover:text-pink-400 transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-pink-400 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-pink-400 transition">
+                            <i class="fab fa-pinterest-p"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-pink-400 transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-2">Newsletter</h4>
+                        <p class="text-gray-400 mb-2 text-sm">Subscribe for updates, promotions and style tips.</p>
+                        <div class="flex">
+                            <input type="email" placeholder="Your email" class="bg-gray-800 text-white px-4 py-2 rounded-l focus:outline-none focus:ring-2 focus:ring-pink-500 w-full">
+                            <button class="bg-pink-600 hover:bg-pink-700 px-4 py-2 rounded-r transition">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick links -->
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-pink-400 transition">Home</a></li>
+                        <li><a href="#shop" class="text-gray-400 hover:text-pink-400 transition">Shop</a></li>
+                        <li><a href="#blog" class="text-gray-400 hover:text-pink-400 transition">Blog</a></li>
+                        <li><a href="#gallery" class="text-gray-400 hover:text-pink-400 transition">Gallery</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-pink-400 transition">About Us</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-pink-400 transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Customer Service -->
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Customer Service</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-pink-400 transition">My Account</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-pink-400 transition">Order Tracking</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-pink-400 transition">Shipping Information</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-pink-400 transition">Returns & Exchanges</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-pink-400 transition">FAQs</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-pink-400 transition">Gift Cards</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Contact Us</h4>
+                    <address class="not-italic text-gray-400 space-y-2">
+                        <p class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-2 text-pink-400"></i>
+                            <span>123 Fashion Ave<br>Chicago, IL 60601</span>
+                        </p>
+                        <p class="flex items-center">
+                            <i class="fas fa-phone mr-2 text-pink-400"></i>
+                            <span>1-800-555-HEEL (4335)</span>
+                        </p>
+                        <p class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-pink-400"></i>
+                            <span>hello@emmasiconicstyle.com</span>
+                        </p>
+                        <p class="flex items-center">
+                            <i class="fas fa-clock mr-2 text-pink-400"></i>
+                            <span>Customer Service Hours:<br>Mon-Fri 9AM-5PM CST</span>
+                        </p>
+                    </address>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-800">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    <p class="text-gray-400 text-sm">© 2023 Emmas Iconic Style. All rights reserved.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-pink-400 transition text-sm">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-pink-400 transition text-sm">Terms of Service</a>
+                        <a href="#" class="text-gray-400 hover:text-pink-400 transition text-sm">Accessibility</a>
+                        <a href="#" class="text-gray-400 hover:text-pink-400 transition text-sm">Sitemap</a>
+                    </div>
+                    <div class="flex space-x-4">
+                        <img src="https://via.placeholder.com/40x25?text=VISA" alt="Visa" class="h-6">
+                        <img src="https://via.placeholder.com/40x25?text=MC" alt="Mastercard" class="h-6">
+                        <img src="https://via.placeholder.com/40x25?text=AMEX" alt="American Express" class="h-6">
+                        <img src="https://via.placeholder.com/40x25?text=PayPal" alt="PayPal" class="h-6">
+                        <img src="https://via.placeholder.com/40x25?text=Apple" alt="Apple Pay" class="h-6">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Quick View Modal -->
+    <div id="quick-view-modal" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden overflow-y-auto">
+        <div class="container mx-auto px-4 py-12">
+            <div class="max-w-6xl mx-auto bg-white rounded-lg overflow-hidden">
+                <div class="relative">
+                    <button id="close-quick-view" class="absolute top-4 right-4 bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-md z-10 hover:bg-gray-100 transition">
+                        <i class="fas fa-times text-gray-800"></i>
+                    </button>
+                    
+                    <div class="flex flex-col lg:flex-row">
+                        <!-- Product Images -->
+                        <div class="lg:w-1/2 p-6">
+                            <div class="mb-4 h-96 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden">
+                                <img id="quick-view-main-image" src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" 
+                                     alt="Product" class="h-full w-full object-contain">
+                            </div>
+                            <div class="grid grid-cols-4 gap-2">
+                                <button class="quick-view-thumbnail h-20 bg-gray-100 rounded overflow-hidden border-2 border-transparent hover:border-pink-500 transition">
+                                    <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" 
+                                         alt="Thumbnail" class="w-full h-full object-cover">
+                                </button>
+                                <button class="quick-view-thumbnail h-20 bg-gray-100 rounded overflow-hidden border-2 border-transparent hover:border-pink-500 transition">
+                                    <img src="https://images.unsplash.com/photo-1549298916-f52d724204b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=813&q=80" 
+                                         alt="Thumbnail" class="w-full h-full object-cover">
+                                </button>
+                                <button class="quick-view-thumbnail h-20 bg-gray-100 rounded overflow-hidden border-2 border-transparent hover:border-pink-500 transition">
+                                    <img src="https://images.unsplash.com/photo-1598440947610-fbf1fd871f99?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" 
+                                         alt="Thumbnail" class="w-full h-full object-cover">
+                                </button>
+                                <button class="quick-view-thumbnail h-20 bg-gray-100 rounded overflow-hidden border-2 border-transparent hover:border-pink-500 transition">
+                                    <img src="https://images.unsplash.com/photo-1505455184862-554165e5f6ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" 
+                                         alt="Thumbnail" class="w-full h-full object-cover">
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Product Info -->
+                        <div class="lg:w-1/2 p-6 border-t lg:border-t-0 lg:border-l border-gray-200">
+                            <h2 id="quick-view-title" class="text-2xl font-bold mb-2">Elegant Black Heels</h2>
+                            <div class="flex items-center mb-4">
+                                <div class="flex text-yellow-400 mr-2">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <span class="text-gray-600 text-sm">(28 reviews)</span>
+                                <a href="#reviews" class="text-pink-600 hover:underline ml-4 text-sm">Read reviews</a>
+                            </div>
+                            
+                            <div id="quick-view-price" class="text-2xl text-pink-600 font-bold mb-6">$129.99</div>
+                            
+                            <div class="prose text-gray-600 mb-6">
+                                <p>These timeless black heels feature a sleek design with a comfortable 3-inch heel, perfect for both office and evening wear. Made with premium Italian leather and cushioned insoles for all-day comfort.</p>
+                                <ul class="list-disc pl-5 mt-2">
+                                    <li>Genuine leather upper</li>
+                                    <li>Padded insole for comfort</li>
+                                    <li>3-inch stacked heel</li>
+                                    <li>Available in black, navy, and red</li>
+                                </ul>
+                            </div>
+                            
+                            <form class="space-y1-6">
+                                <div class="mb-4">
+                                    <label class="block text-gray-700 mb-2">Color:</label>
+                                    <div class="flex space-x-2">
+                                        <button type="button" class="color-option w-8 h-8 rounded-full bg-black border-2 border-white shadow-sm ring-2 ring-pink-500"></button>
+                                        <button type="button" class="color-option w-8 h-8 rounded-full bg-blue-900 border-2 border-white shadow-sm ring-2 ring-transparent hover:ring-pink-500 transition"></button>
+                                        <button type="button" class="color-option w-8 h-8 rounded-full bg-red-700 border-2 border-white shadow-sm ring-2 ring-transparent hover:ring-pink-500 transition"></button>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <label for="size" class="block text-gray-700 mb-2">Size:</label>
+                                    <select id="size" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+                                        <option value="">Select Size</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                    <a href="#" class="text-pink-600 hover:underline text-sm mt-1 inline-block">View size guide</a>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <label for="quantity" class="block text-gray-700 mb-2">Quantity:</label>
+                                    <div class="flex">
+                                        <button type="button" class="quantity-btn px-4 py-2 bg-gray-200 rounded-l-lg hover:bg-gray-300 transition">-</button>
+                                        <input type="number" id="quantity" value="1" min="1" max="10" class="w-16 text-center border-t border-b border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-500">
+                                        <button type="button" class="quantity-btn px-4 py-2 bg-gray-200 rounded-r-lg hover:bg-gray-300 transition">+</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        <span class="text-gray-600">In stock (5 available)</span>
+                                    </div>
+                                    <div class="flex items-center mt-1">
+                                        <i class="fas fa-store text-pink-500 mr-2"></i>
+                                        <span class="text-gray-600">Available in our Chicago and Boston stores</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex space-x-4 mb-6">
+                                    <button type="button" class="flex-1 bg-pink-600 hover:bg-pink-700 text-white font-medium py-3 px-4 rounded-lg transition">
+                                        Add to Cart
+                                    </button>
+                                    <button type="button" class="flex-1 bg-transparent border border-pink-600 text-pink-600 font-medium py-3 px-4 rounded-lg hover:bg-pink-50 transition">
+                                        Add to Wishlist
+                                    </button>
+                                </div>
+                                
+                                <div class="border-t border-gray-200 pt-4">
+                                    <h4 class="font-bold mb-2">Product Details</h4>
+                                    <table class="w-full text-sm text-gray-600">
+                                        <tbody>
+                                            <tr>
+                                                <td class="py-1 font-medium">Brand</td>
+                                                <td class="py-1">Emmas Iconic Style</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-1 font-medium">Collection</td>
+                                                <td class="py-1">Classic Elegance</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-1 font-medium">Material</td>
+                                                <td class="py-1">Italian Leather</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-1 font-medium">Heel Height</td>
+                                                <td class="py-1">3 inches</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-1 font-medium">Occasion</td>
+                                                <td class="py-1">Work, Evening, Formal</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shopping Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed top-0 right-0 w-full sm:w-96 h-full bg-white shadow-xl z-50 transform translate-x-full transition-transform duration-300 overflow-y-auto">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6 pb-4 border-b border-gray-200">
+                <h2 class="text-xl font-bold">Your Cart (3)</h2>
+                <button id="close-cart" class="text-gray-500 hover:text-pink-600">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <div class="space-y-6">
+                <!-- Cart Item 1 -->
+                <div class="flex border-b border-gray-100 pb-6">
+                    <div class="mr-4">
+                        <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" 
+                             alt="Elegant Black Heels" class="w-20 h-20 object-cover">
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex justify-between">
+                            <h3 class="font-medium">Elegant Black Heels</h3>
+                            <button class="text-gray-400 hover:text-pink-600">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <p class="text-gray-500 text-sm">Classic Collection</p>
+                        <p class="text-pink-600 font-medium">$129.99</p>
+                        <div class="flex items-center mt-2">
+                            <button class="quantity-btn px-2 py-1 bg-gray-200 rounded-l hover:bg-gray-300 transition">-</button>
+                            <span class="px-3 py-1 bg-gray-100">1</span>
+                            <button class="quantity-btn px-2 py-1 bg-gray-200 rounded-r hover:bg-gray-300 transition">+</button>
+                            <span class="ml-auto text-sm text-gray-500">Size: 7</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cart Item 2 -->
+                <div class="flex border-b border-gray-100 pb-6">
+                    <div class="mr-4">
+                        <img src="https://images.unsplash.com/photo-1562273138-f46be4ebdf33?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80" 
+                             alt="White Summer Sandals" class="w-20 h-20 object-cover">
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex justify-between">
+                            <h3 class="font-medium">White Summer Sandals</h3>
+                            <button class="text-gray-400 hover:text-pink-600">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <p class="text-gray-500 text-sm">Beach Collection</p>
+                        <p class="text-pink-600 font-medium">$89.99 <span class="text-gray-400 line-through text-sm">$109.99</span></p>
+                        <div class="flex items-center mt-2">
+                            <button class="quantity-btn px-2 py-1 bg-gray-200 rounded-l hover:bg-gray-300 transition">-</button>
+                            <span class="px-3 py-1 bg-gray-100">2</span>
+                            <button class
+</body>
+</html>
